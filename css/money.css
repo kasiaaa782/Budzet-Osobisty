@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'fontello';
-  src: url('../font/fontello.eot?55603081');
-  src: url('../font/fontello.eot?55603081#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?55603081') format('woff2'),
-       url('../font/fontello.woff?55603081') format('woff'),
-       url('../font/fontello.ttf?55603081') format('truetype'),
-       url('../font/fontello.svg?55603081#fontello') format('svg');
+  font-family: 'money';
+  src: url('../font/money.eot?13595737');
+  src: url('../font/money.eot?13595737#iefix') format('embedded-opentype'),
+       url('../font/money.woff2?13595737') format('woff2'),
+       url('../font/money.woff?13595737') format('woff'),
+       url('../font/money.ttf?13595737') format('truetype'),
+       url('../font/money.svg?13595737#money') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,14 +14,14 @@
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?55603081#fontello') format('svg');
+    font-family: 'money';
+    src: url('../font/money.svg?13595737#money') format('svg');
   }
 }
 */
  
  [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
+  font-family: "money";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -56,3 +56,4 @@
 }
  
 .icon-mail:before { content: '\e800'; } /* '' */
+.icon-ok:before { content: '\e802'; } /* '' */
