@@ -1,4 +1,44 @@
 body
 {
-		background-color: grey;
+		background-image: url("img/handmadepaper.png");
+		font-family: 'Roboto Slab', serif;
+}
+
+#wrapper
+{
+		width: 100%;
+}
+
+#header
+{
+		width: 100%;
+		background-color: #296AF5;
+		padding: 3px 0;
+		opacity: 0.7;
+		border-radius: 10px;
+}
+
+h1
+{
+	margin: 10px;
+	font-size: 30px;
+	text-transform: uppercase;	
+	font-weight: 700;
+}
+
+h3
+{
+	margin: 10px;
+	font-size: 18px;
+	font-style: italic;
+}
+
+#logo
+{
+		margin-left: auto;
+		margin-right: auto;
+		color: #FFFFFF;
+		text-align: center;
+		letter-spacing: 3px;
+		text-shadow: 0.8px 0.8px #0C255C;
 }
