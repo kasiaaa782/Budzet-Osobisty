@@ -55,16 +55,16 @@ h4
 h2
 {
 	margin: 0;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	font-size: 45px;
 }
 
 #sentence
 {
-		width: 400px;
+		width: 350px;
 		padding: 5px;
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-top: 8px;
+		margin-bottom: 8px;
 		margin-left: auto;
 		margin-right: auto;
 		font-size: 20px;
