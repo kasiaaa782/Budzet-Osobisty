@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Budżet osobisty</title>
+	<meta name="description" content="Chcesz zapanować nad finansami? Załóż swój osobisty budżet! Sprawdź, jak to zrobić!" />
+	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	
+	<link rel="stylesheet" href="wydatek.css" type="text/css" />
+	<link rel="stylesheet" href="css\money.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<div  id="header">
+				<div id="logo">
+					<h1>Budżet osobisty</h1>
+					<h4>Zapanuj nad swoimi finansami</h4>
+				</div>
+			</div>
+			<nav>
+				<ol>
+					<li><a href="#">Strona główna</a></li>
+					<li><a href="#">Dodaj przychód</a></li>
+					<li><a href="#">Dodaj wydatek</a></li>
+					<li><a href="#">Przeglądaj bilans</a></li>
+					<li><a href="#">Ustawienia</a></li>
+					<li><a href="#">Wyloguj się</a></li>
+				</ol>
+			</nav>
+		</header>
+		<main>
+			<div id="content">
+				<h4>Dodawanie wydatku</h4>
+				<h5>Uzupełnij poniższe dane dotyczące nowego wydatku</h5>
+				<form action="" method="post" enctype="text/plain">
+					<div><label>Kwota : <input type="text" name="kwota"></label></div>
+					<div><label>Data : <input type="date" name="data"></label></div>
+
+					<legend>Sposób płatności : </legend> 
+					<label><input type="radio" name="platnosc" value="">gotówka</label>
+					<label><input type="radio" name="platnosc" value="">karta debetowa</label>
+					<label><input type="radio" name="platnosc" value="">karta kredytowa</label>
+
+					<legend>Kategoria : </legend>
+					<div class="categories">
+						<div><label><input type="radio" value="1" name="kategoria">Jedzenie</label></div>
+						<div><label><input type="radio" value="2" name="kategoria">Mieszkanie</label></div>
+						<div><label><input type="radio" value="3" name="kategoria">Transport</label></div>
+						<div><label><input type="radio" value="4" name="kategoria">Telekomunikacja</label></div>
+					</div>
+					<div class="categories">
+						<div><label><input type="radio" value="5" name="kategoria">Opieka zdrowotna</label></div>
+						<div><label><input type="radio" value="6" name="kategoria">Ubranie</label></div>
+						<div><label><input type="radio" value="7" name="kategoria">Higiena</label></div>
+						<div><label><input type="radio" value="8" name="kategoria">Dzieci</label></div>
+					</div>
+					<div class="categories">
+						<div><label><input type="radio" value="9" name="kategoria">Rozrywka</label></div>
+						<div><label><input type="radio" value="10" name="kategoria">Wycieczka</label></div>
+						<div><label><input type="radio" value="11" name="kategoria">Książki</label></div>
+						<div><label><input type="radio" value="12" name="kategoria">Oszczędności</label></div>
+					</div>
+					<div class="categories">
+						<div><label><input type="radio" value="13" name="kategoria">Emerytura</label></div>
+						<div><label><input type="radio" value="14" name="kategoria">Spłata długów</label></div>
+						<div><label><input type="radio" value="15" name="kategoria">Darowizna</label></div>
+						<div><label><input type="radio" value="16" name="kategoria">Inne wydatki</label></div>
+					</div>
+
+					<div>
+						<div><label for="komentarz">W razie potrzeby, wstaw krótki komentarz</label></div>
+						<textarea name="komentarz" id="komentarz" rows="2" cols="60" maxlength="25"></textarea>
+					</div>
+					<div>
+						<input type="submit" value="Dodaj wydatek"> 
+						<input type="button" value="Anuluj"> 
+					</div>					
+				</form>
+			</div>
+		</main>
+		<footer>
+			2020 &copy; Wszelkie prawa zastrzeżone 
+			<i class="icon-mail"></i> katarzyna.niemiec.programista@gmail.com
+	     </footer>
+	</div>		
+</body>
+</html>
