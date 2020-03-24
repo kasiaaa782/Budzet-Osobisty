@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="wydatek.css" type="text/css" />
 	<link rel="stylesheet" href="css\money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
-	
+
 </head>
 <body>
 	<div id="wrapper">
@@ -34,52 +34,53 @@
 		</header>
 		<main>
 			<div id="content">
-				<h4>Dodawanie wydatku</h4>
-				<h5>Uzupełnij poniższe dane dotyczące nowego wydatku</h5>
-				<form action="" method="post" enctype="text/plain">
-					<div><label>Kwota : <input type="text" name="kwota"></label></div>
-					<div><label>Data : <input type="date" name="data"></label></div>
+				<div id="title">Dodawanie wydatku</div>
+				<div id="content_inside">
+					<div class="sentence">Uzupełnij poniższe dane dotyczące nowego wydatku </div>
+					<form action="" method="post" enctype="text/plain">
+						<label>Kwota : <input type="text" name="kwota"></label>
+						<span style="margin-left: 130px"><label>Data : <input type="date" name="data"></label></span>
+						<legend style="margin-top: 10px; margin-bottom: 8px">Sposób płatności : </legend>
+						<div id="platnosc">
+							<label><input type="radio" name="platnosc" value="">gotówka</label>
+							<span style="margin-left: 30px"><label><input type="radio" name="platnosc" value="">karta debetowa</label></span>
+							<span style="margin-left: 30px"><label><input type="radio" name="platnosc" value="">karta kredytowa</label></span>
+						</div>
+						<legend style="margin-bottom: 10px">Kategoria : </legend>
+						<div class="categories">
+							<div><label><input type="radio" value="1" name="kategoria">Jedzenie</label></div>
+							<div><label><input type="radio" value="2" name="kategoria">Mieszkanie</label></div>
+							<div><label><input type="radio" value="3" name="kategoria">Transport</label></div>
+							<div><label><input type="radio" value="4" name="kategoria">Telekomunikacja</label></div>
+						</div>
+						<div class="categories">
+							<div><label><input type="radio" value="5" name="kategoria">Opieka zdrowotna</label></div>
+							<div><label><input type="radio" value="6" name="kategoria">Ubranie</label></div>
+							<div><label><input type="radio" value="7" name="kategoria">Higiena</label></div>
+							<div><label><input type="radio" value="8" name="kategoria">Dzieci</label></div>
+						</div>
+						<div class="categories">
+							<div><label><input type="radio" value="9" name="kategoria">Rozrywka</label></div>
+							<div><label><input type="radio" value="10" name="kategoria">Wycieczka</label></div>
+							<div><label><input type="radio" value="11" name="kategoria">Książki</label></div>
+							<div><label><input type="radio" value="12" name="kategoria">Oszczędności</label></div>
+						</div>
+						<div class="categories">
+							<div><label><input type="radio" value="13" name="kategoria">Emerytura</label></div>
+							<div><label><input type="radio" value="14" name="kategoria">Spłata długów</label></div>
+							<div><label><input type="radio" value="15" name="kategoria">Darowizna</label></div>
+							<div><label><input type="radio" value="16" name="kategoria">Inne wydatki</label></div>
+						</div>
 
-					<legend>Sposób płatności : </legend> 
-					<label><input type="radio" name="platnosc" value="">gotówka</label>
-					<label><input type="radio" name="platnosc" value="">karta debetowa</label>
-					<label><input type="radio" name="platnosc" value="">karta kredytowa</label>
-
-					<legend>Kategoria : </legend>
-					<div class="categories">
-						<div><label><input type="radio" value="1" name="kategoria">Jedzenie</label></div>
-						<div><label><input type="radio" value="2" name="kategoria">Mieszkanie</label></div>
-						<div><label><input type="radio" value="3" name="kategoria">Transport</label></div>
-						<div><label><input type="radio" value="4" name="kategoria">Telekomunikacja</label></div>
-					</div>
-					<div class="categories">
-						<div><label><input type="radio" value="5" name="kategoria">Opieka zdrowotna</label></div>
-						<div><label><input type="radio" value="6" name="kategoria">Ubranie</label></div>
-						<div><label><input type="radio" value="7" name="kategoria">Higiena</label></div>
-						<div><label><input type="radio" value="8" name="kategoria">Dzieci</label></div>
-					</div>
-					<div class="categories">
-						<div><label><input type="radio" value="9" name="kategoria">Rozrywka</label></div>
-						<div><label><input type="radio" value="10" name="kategoria">Wycieczka</label></div>
-						<div><label><input type="radio" value="11" name="kategoria">Książki</label></div>
-						<div><label><input type="radio" value="12" name="kategoria">Oszczędności</label></div>
-					</div>
-					<div class="categories">
-						<div><label><input type="radio" value="13" name="kategoria">Emerytura</label></div>
-						<div><label><input type="radio" value="14" name="kategoria">Spłata długów</label></div>
-						<div><label><input type="radio" value="15" name="kategoria">Darowizna</label></div>
-						<div><label><input type="radio" value="16" name="kategoria">Inne wydatki</label></div>
-					</div>
-
-					<div>
-						<div><label for="komentarz">W razie potrzeby, wstaw krótki komentarz</label></div>
-						<textarea name="komentarz" id="komentarz" rows="2" cols="60" maxlength="25"></textarea>
-					</div>
-					<div>
-						<input type="submit" value="Dodaj wydatek"> 
-						<input type="button" value="Anuluj"> 
-					</div>					
-				</form>
+						<div>
+							<textarea name="komentarz" id="komentarz" rows="1" cols="84" placeholder="Krótki komentarz" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz'"></textarea>
+						</div>
+						<div style="text-align: center">
+							<input type="submit" value="Dodaj wydatek" onclick="sprawdz()"> 
+							<input type="button" value="Anuluj"> 
+						</div>					
+					</form>
+				</div>
 			</div>
 		</main>
 		<footer>
