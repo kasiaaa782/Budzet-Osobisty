@@ -16,6 +16,39 @@ body
 		font-size: 15px;
 }
 
+table, th, td 
+{
+	border: 1px solid #1A78D6;
+	border-collapse: collapse;
+	padding: 6px;
+}
+
+table
+{
+	margin-left: 30px;
+	margin-bottom: 10px;
+	width: 70%;
+	background-color: #568cf0;
+
+}
+
+p1
+{
+	display: block;
+	margin-left: 50px;
+	margin-bottom: 10px ;
+	font-size: 15px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+#content_inside
+{
+	width: 570px;
+	margin-left: 100px;
+	padding: 0 30px 0 30px;
+}
+
 #title
 {
 		text-shadow: 0.7px 0.7px #0072E3;
@@ -30,7 +63,7 @@ body
 {
 		float:left;
 		position:absolute;
-		margin-left: 500px;
+		margin-left: 300px;
 }
 
 #dropbutton 
@@ -62,6 +95,12 @@ body
 	padding: 10px 16px;
 	text-decoration: none;
 	display: block;
+	border-top: 1px dashed rgb(97, 176, 240);
+}
+
+#dropdown-content a:first-child
+{
+	border-top: none;
 }
 
 #dropdown-content a:hover 
@@ -78,15 +117,7 @@ body
 #select_period_dropdown:hover
 #dropbutton 
 {
-	background-color:#2E8FF1;
-}
-
-#content_inside
-{
-	background-color: #1A78D6;
-	width: 670px;
-	margin: 0;
-	padding: 0 30px 0 30px;
+	background-color:rgb(42, 128, 214);
 }
 
 .sentence
