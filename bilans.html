@@ -11,8 +11,10 @@
 	<link rel="stylesheet" href="css\money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
 
+	<!--Wykorzystane do PieChart - wykresu-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="wydatek.js"></script>
-	
+
 </head>
 <body>
 	<div id="wrapper">
@@ -36,134 +38,131 @@
 		</header>
 		<main>
 			<div id="content">
-					<div id="title">Bilans finansowy</div>
-					<div id="select_period_dropdown">
-						<button id="dropbutton">Wybierz okres</button>
-						<div id="dropdown-content">
-							<a href="#">Bieżący miesiąc</a>
-							<a href="#">Poprzedni miesiąc</a>
-							<a href="#">Bieżący rok</a>
-							<a href="#">Niestandardowy</a>
-						</div>
+				<div id="title">Bilans finansowy</div>
+				<div id="select_period_dropdown">
+					<button id="dropbutton">Wybierz okres</button>
+					<div id="dropdown-content">
+						<a href="#">Bieżący miesiąc</a>
+						<a href="#">Poprzedni miesiąc</a>
+						<a href="#">Bieżący rok</a>
+						<a href="#">Niestandardowy</a>
 					</div>
+				</div>
 				<div class="sentence">Za okres od 01.04.2020 do 31.04.2020 </div>
-				
-				<div id="content_inside">
-					<div>
-						<p1>PRZYCHODY</p1>
-						<table>
-							<tr>
-								<th>Kategoria</th>
-								<th>Kwota</th>
-							</tr>
-							<tr>
-								<td>Wynagrodzenie</td>
-								<td>3000,0</td>
-							</tr>
-							<tr>
-								<td>Odsetki bankowe</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Sprzedaż na allegro</td>
-								<td>250,0</td>
-							</tr>
-							<tr>
-								<td>Inne</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td><strong>Suma</strong></td>
-								<td>3250,0</td>
-							</tr>
-						</table> 
-					</div>
-					<div>
-						<p1>WYDATKI</p1>
-						<table>
-							<tr>
-								<th>Kategoria</th>
-								<th>Kwota</th>
-							</tr>
-							<tr>
-								<td>Jedzenie</td>
-								<td>300,0</td>
-							</tr>
-							<tr>
-								<td>Mieszkanie</td>
-								<td>1200,0</td>
-							</tr>
-							<tr>
-								<td>Transport</td>
-								<td>200,0</td>
-							</tr>
-							<tr>
-								<td>Telekomunikacja</td>
-								<td>70,0</td>
-							</tr>
-							<tr>
-								<td>Opieka zdrowotna</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Ubrania</td>
-								<td>80,0</td>
-							</tr>
-							<tr>
-								<td>Higiena</td>
-								<td>25,0</td>
-							</tr>
-							<tr>
-								<td>Dzieci</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Rozrywka</td>
-								<td>10,0</td>
-							</tr>
-							<tr>
-								<td>Wycieczka</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Szkolenia</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Ksiązka</td>
-								<td>32,0</td>
-							</tr>
-							<tr>
-								<td>Oszczędności</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Na emeryturę</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Spłata długów</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td>Darowizna</td>
-								<td>15,0</td>
-							</tr>
-							<tr>
-								<td>Inne wydatki</td>
-								<td>0,0</td>
-							</tr>
-							<tr>
-								<td><strong>Suma</strong></td>
-								<td>1932,0</td>
-							</tr>
-						</table> 
-					</div>
-					<div id="piechart">
-						<p1>BILANS</p1>
-						* wykres </br>
+				<div>
+					<p1>PRZYCHODY</p1>
+					<table>
+						<tr>
+							<th>Kategoria</th>
+							<th>Kwota</th>
+						</tr>
+						<tr>
+							<td>Wynagrodzenie</td>
+							<td>3000.0</td>
+						</tr>
+						<tr>
+							<td>Odsetki bankowe</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Sprzedaż na allegro</td>
+							<td>250.0</td>
+						</tr>
+						<tr>
+							<td>Inne</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td><strong>Suma</strong></td>
+							<td><strong>3250.0</strong></td>
+						</tr>
+					</table> 
+				</div>
+				<div>
+					<p1>WYDATKI</p1>
+					<table>
+						<tr>
+							<th>Kategoria</th>
+							<th>Kwota</th>
+						</tr>
+						<tr>
+							<td>Jedzenie</td>
+							<td id="eat">300</td>
+						</tr>
+						<tr>
+							<td>Mieszkanie</td>
+							<td>1200.0</td>
+						</tr>
+						<tr>
+							<td>Transport</td>
+							<td>200.0</td>
+						</tr>
+						<tr>
+							<td>Telekomunikacja</td>
+							<td>70.0</td>
+						</tr>
+						<tr>
+							<td>Opieka zdrowotna</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Ubrania</td>
+							<td>80.0</td>
+						</tr>
+						<tr>
+							<td>Higiena</td>
+							<td>25.0</td>
+						</tr>
+						<tr>
+							<td>Dzieci</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Rozrywka</td>
+							<td>10.0</td>
+						</tr>
+						<tr>
+							<td>Wycieczka</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Szkolenia</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Ksiązka</td>
+							<td>32.0</td>
+						</tr>
+						<tr>
+							<td>Oszczędności</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Na emeryturę</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>Spłata długów</td>
+							<td>0,0</td>
+						</tr>
+						<tr>
+							<td>Darowizna</td>
+							<td>15.0</td>
+						</tr>
+						<tr>
+							<td>Inne wydatki</td>
+							<td>100.0</td>
+						</tr>
+						<tr>
+							<td><strong>Suma</strong></td>
+							<td><strong>2032.0</strong></td>
+						</tr>
+					</table> 
+				</div>
+				<div id="piechart"></div>
+				<div id="balance">
+					<p1>BILANS</p1>
 						Wynik:
-					</div>
 				</div>
 			</div>
 		</main>
