@@ -16,18 +16,36 @@ body
 		font-size: 15px;
 }
 
-#score
+#piechart
 {
-	color: black;
+	border: 1px solid #1A78D6;
 }
 
 #balance
 {
-	background-color: #f9f9f9;
+	background-color: #ffffff;
+	color: rgb(18, 98, 179);
 	margin-top:10px;
-	width: 100px;
-	height: 100px;
+	width: 680px;
 	border: 1px solid #1A78D6;
+	padding: 10px;
+	text-align: center;
+}
+
+#balance1
+{
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+}
+
+#score
+{
+	color: rgb(15, 110, 206);
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 10px;
 }
 
 table, th, td 
@@ -66,12 +84,10 @@ p1
 		font-weight: 700;
 		text-align: center;
 		padding: 0;
-		float:left;
 }
 
 #select_period_dropdown
 {
-		float:left;
 		position:absolute;
 		margin-left: 330px;
 }
@@ -153,6 +169,7 @@ p1
 		display:flex;
 		flex-direction: column;
 		align-items: center;
+		position: static;
 }
 
 #wrapper

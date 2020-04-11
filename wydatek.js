@@ -49,6 +49,8 @@ function drawChart() {
 	// Optional; add a title and set the width and height of the chart
 	var options = {
 		'title':'Wykres finansowy',
+		'width': 700, 
+		'height': 300,
 		is3D : true
 		};
 	//Display the chart inside the <div> element with id="piechart"
