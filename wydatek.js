@@ -48,7 +48,7 @@ function drawChart() {
 	]);
 	// Optional; add a title and set the width and height of the chart
 	var options = {
-		'title':'Wykres finansowy',
+		'title':'Wykres finansowy wydatków',
 		'width': 700, 
 		'height': 300,
 		is3D : true
