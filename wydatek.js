@@ -1,6 +1,7 @@
 window.onload = function() 
 {
-	setCurrentDate();
+	//setCurrentDate();
+	selectPeriod(1);
 }
 
 function setCurrentDate()
@@ -17,8 +18,70 @@ function setCurrentDate()
 	var year = today.getFullYear();
 
 	dateOnPage.value = year + "-" + month + "-" + day ;
+}
 
-	console.log(dateOnPage.value)
+function getDaysNumberOfMonth(month, year)
+{
+	var daysNumber;
+	switch(month) 
+	{
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			daysNumber = 31;
+			break;
+	
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			daysNumber = 30;
+			break;
+	
+		case 2: {
+			if((year%4 == 0) && (year%100 != 0) || (year%400 == 0))
+				daysNumber = 29;
+			else
+				daysNumber = 28;
+			break;
+		}
+	}
+	return daysNumber;
+}
+
+function selectPeriod(option)
+{
+	var today = new Date();
+	var day = today.getDate().toString();
+	day = (day.length === 1) ? '0' + day : day;
+	var month = today.getMonth() + 1;
+	month = (month.toString().length === 1) ? '0' + month : month;
+	var year = today.getFullYear();
+
+	var sentence;	
+	switch(option)
+	{
+		case 1: //current month
+			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
+			break;
+		case 2: //previous month
+			month = parseInt(month) - 1;
+			month = (month.toString().length === 1) ? '0' + month : month;
+			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
+			break;
+		case 3: //current year
+			sentence = "Za okres od 01.01."+year+" do 31.12."+year;
+			break;		
+		case 4: //nonstandard
+			sentence = "Wybierz przedział czasowy";	
+			break
+	}
+	document.getElementById("period").innerHTML = sentence;
+	console.log(sentence);
 }
 
 //Load google charts
