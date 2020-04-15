@@ -8,6 +8,7 @@ window.onload = function()
 		addingIncomes();
 		addingExpenses();
 		createPieChart();
+		setScore();
 	}
 }
 
@@ -186,4 +187,29 @@ function addingExpenses()
 	 var expense17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
 	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16+expense17;
 	 document.getElementById("sumOfExpenses").innerHTML = sum;
+}
+
+Number.prototype.roundNumber = function(quantityOfPlacesAfterComma)
+{
+	var k = quantityOfPlacesAfterComma;
+	return +(Math.round(this+"e+"+k)+"e-"+k);
+}
+
+function setScore()
+{
+	var score;
+	var incomes = document.getElementById("sumOfIncomes").innerHTML;
+	var expenses = document.getElementById("sumOfExpenses").innerHTML;
+	score = incomes - expenses;
+	score = score.roundNumber(2);
+	document.getElementById("result").innerHTML = score;
+	
+	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj. Wpadasz w długi!";
+	else if( score === 0) 
+	{
+		score = score+".0";
+		document.getElementById("result").innerHTML = score;
+		document.getElementById("score").innerHTML = "Nie udało Ci się zaoszczędzić. Wychodzisz na zero!";
+	}
+	else document.getElementById("score").innerHTML = "Gratulacje. Świetnie zarządzasz finansami!";
 }

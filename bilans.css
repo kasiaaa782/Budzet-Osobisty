@@ -17,6 +17,11 @@ body
 		overflow-x: hidden;
 }
 
+#result
+{
+	font-size: large;
+}
+
 input[type=date]
 {
 	width:130px;
