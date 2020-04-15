@@ -17,6 +17,31 @@ body
 		overflow-x: hidden;
 }
 
+input[type=date]
+{
+	width:130px;
+	padding: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+    color: #003F7F;
+	border: 2px solid #BCCAE8;
+	border-radius: 5px;
+	outline:none;
+	height:17px;
+}
+
+#selectPeriod
+{
+	margin-bottom: 13px;
+	margin-left: 5px;
+	display: block;
+}
+
+input[type=date]:hover, input[type=date]:focus
+{
+	border-color: #9EBDDB;
+}
+
 #piechart
 {
 	border: 1px solid #1A78D6;

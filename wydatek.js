@@ -1,7 +1,8 @@
 window.onload = function() 
 {
-	//setCurrentDate();
-	selectPeriod(1);
+	var title = document.getElementById("title").innerHTML;
+	if(title === "Dodawanie wydatku") setCurrentDate();
+	if(title === "Bilans finansowy") selectPeriod(1);
 }
 
 function setCurrentDate()
@@ -67,21 +68,24 @@ function selectPeriod(option)
 	{
 		case 1: //current month
 			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
+			document.getElementById("selectPeriod").style.display = "none";
 			break;
 		case 2: //previous month
 			month = parseInt(month) - 1;
 			month = (month.toString().length === 1) ? '0' + month : month;
 			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
+			document.getElementById("selectPeriod").style.display = "none";
 			break;
 		case 3: //current year
 			sentence = "Za okres od 01.01."+year+" do 31.12."+year;
+			document.getElementById("selectPeriod").style.display = "none";
 			break;		
 		case 4: //nonstandard
 			sentence = "Wybierz przedział czasowy";	
+			document.getElementById("selectPeriod").style.display = "block";
 			break
 	}
 	document.getElementById("period").innerHTML = sentence;
-	console.log(sentence);
 }
 
 //Load google charts
