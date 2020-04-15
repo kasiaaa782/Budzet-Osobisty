@@ -207,7 +207,7 @@ function setScore()
 	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj. Wpadasz w długi!";
 	else if( score === 0) 
 	{
-		score = score+".0";
+		score = score+".00";
 		document.getElementById("result").innerHTML = score;
 		document.getElementById("score").innerHTML = "Nie udało Ci się zaoszczędzić. Wychodzisz na zero!";
 	}

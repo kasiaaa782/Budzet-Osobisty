@@ -17,6 +17,27 @@ body
 		overflow-x: hidden;
 }
 
+input[type=submit]
+{
+	background-color: #1A78D6;
+	font-family: 'Roboto Slab', serif;
+	font-size:15px;
+	color: white;
+	padding: 5px;
+	border: none;
+	cursor: pointer;
+	letter-spacing: 1px;
+	outline: none;
+	margin-top: 15px;
+	width:100px;
+	margin-left: 135px;
+}
+
+input[type=submit]:hover
+{
+	background-color: #2E8FF1;
+}
+
 #result
 {
 	font-size: large;
@@ -95,6 +116,14 @@ th, td
 {
 	padding: 6px;
 	padding-left: 15px;
+}
+
+#salary,#bankInterest,#allegro,#otherIncome,#sumOfIncomes,
+#eat,#accommodation,#transport,#telecommunication,#healthcare,
+#clothes,#hygiene,#kids,#entertainment,#trip,#training,
+#books,#savings,#pension,#debts,#donation,#otherExpenses,#sumOfExpenses
+{
+	text-align: right;
 }
 
 table
