@@ -2,7 +2,11 @@ window.onload = function()
 {
 	var title = document.getElementById("title").innerHTML;
 	if(title === "Dodawanie wydatku") setCurrentDate();
-	if(title === "Bilans finansowy") selectPeriod(1);
+	if(title === "Bilans finansowy") 
+	{
+		selectPeriod(1);
+		addingIncomes();
+	}
 }
 
 function setCurrentDate()
@@ -125,3 +129,13 @@ function drawChart() {
 	chart.draw(data, options);
 }
 
+function addingIncomes()
+{
+	 var sum;
+	 var income1 = parseFloat(document.getElementById("salary").innerHTML);
+	 var income2 = parseFloat(document.getElementById("bankInterest").innerHTML);
+	 var income3 = parseFloat(document.getElementById("allegro").innerHTML);
+	 var income4 = parseFloat(document.getElementById("other").innerHTML);
+	 sum = income1+income2+income3+income4;
+	 document.getElementById("sumOfIncomes").innerHTML = sum;
+}

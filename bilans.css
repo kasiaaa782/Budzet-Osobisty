@@ -75,6 +75,11 @@ input[type=date]:hover, input[type=date]:focus
 	margin-top: 10px;
 }
 
+.sum
+{
+	font-weight: bold;
+}
+
 table, th, td 
 {
 	border: 1px solid #1A78D6;
