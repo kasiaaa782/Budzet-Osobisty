@@ -51,7 +51,7 @@ input[type=date]:hover, input[type=date]:focus
 {
 	background-color: #ffffff;
 	color: rgb(18, 98, 179);
-	margin-top:10px;
+	margin-top:20px;
 	margin-bottom:10px;
 	width: 400px;
 	border: 1px solid #1A78D6;
@@ -94,7 +94,7 @@ th, td
 
 table
 {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	width: 400px;
 	background-color: #568cf0;
 }
