@@ -6,6 +6,7 @@ window.onload = function()
 	{
 		selectPeriod(1);
 		addingIncomes();
+		addingExpenses();
 	}
 }
 
@@ -135,7 +136,32 @@ function addingIncomes()
 	 var income1 = parseFloat(document.getElementById("salary").innerHTML);
 	 var income2 = parseFloat(document.getElementById("bankInterest").innerHTML);
 	 var income3 = parseFloat(document.getElementById("allegro").innerHTML);
-	 var income4 = parseFloat(document.getElementById("other").innerHTML);
+	 var income4 = parseFloat(document.getElementById("otherIncome").innerHTML);
 	 sum = income1+income2+income3+income4;
 	 document.getElementById("sumOfIncomes").innerHTML = sum;
+}
+
+function addingExpenses()
+{
+	 var sum;
+	 var income1 = parseFloat(document.getElementById("eat").innerHTML);
+	 var income2 = parseFloat(document.getElementById("accommodation").innerHTML);
+	 var income3 = parseFloat(document.getElementById("transport").innerHTML);
+	 var income4 = parseFloat(document.getElementById("telecommunication").innerHTML);
+	 var income5 = parseFloat(document.getElementById("healthcare").innerHTML);
+	 var income6 = parseFloat(document.getElementById("clothes").innerHTML);
+	 var income7 = parseFloat(document.getElementById("hygiene").innerHTML);
+	 var income8 = parseFloat(document.getElementById("kids").innerHTML);
+	 var income9 = parseFloat(document.getElementById("entertainment").innerHTML);
+	 var income10 = parseFloat(document.getElementById("trip").innerHTML);
+	 var income11 = parseFloat(document.getElementById("training").innerHTML);
+	 var income12 = parseFloat(document.getElementById("books").innerHTML);
+	 var income13 = parseFloat(document.getElementById("savings").innerHTML);
+	 var income14 = parseFloat(document.getElementById("pension").innerHTML);
+	 var income15 = parseFloat(document.getElementById("debts").innerHTML);
+	 var income16 = parseFloat(document.getElementById("donation").innerHTML);
+	 var income17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+
+	 sum = income1+income2+income3+income4+income5+income6+income7+income8+income9+income10+income11+income12+income13+income14+income15+income16+income17;
+	 document.getElementById("sumOfExpenses").innerHTML = sum;
 }
