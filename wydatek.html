@@ -7,8 +7,8 @@
 	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 	
-	<link rel="stylesheet" href="wydatek.css" type="text/css" />
-	<link rel="stylesheet" href="css\money.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
 
 	<script type="text/javascript" src="wydatek.js"></script>
@@ -35,16 +35,17 @@
 			</nav>
 		</header>
 		<main>
-			<div id="content">
-				<div id="title">Dodawanie wydatku</div>
+			<div id="content_expense">
+				<div id="title_expense">Dodawanie wydatku</div>
 				<div id="content_inside">
-					<div class="sentence">Uzupełnij poniższe dane dotyczące nowego wydatku </div>
-					<form action="" method="post" enctype="text/plain">
-						<label>Kwota : <input type="text" name="kwota"></label>
-						<span style="margin-left: 130px"><label>Data : <input type="date" name="data" id="data"></label></span>
-
+					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego wydatku </div>
+					<form method="post" enctype="text/plain">
+						<div id="amount_data_inputs">
+							<label> Kwota : <input type="text" name="kwota"  id="amount" ></label>
+							<span style="margin-left: 50px;"><label>Data : <input type="date" name="data" id="data"></label></span>
+						</div>
 						<legend style="margin-top: 10px; margin-bottom: 8px">Sposób płatności : </legend>
-						<div id="platnosc">
+						<div id="payment">
 							<label><input type="radio" name="platnosc" value="">gotówka</label>
 							<span style="margin-left: 30px"><label><input type="radio" name="platnosc" value="">karta debetowa</label></span>
 							<span style="margin-left: 30px"><label><input type="radio" name="platnosc" value="">karta kredytowa</label></span>
@@ -76,17 +77,17 @@
 						</div>
 
 						<div>
-							<textarea name="komentarz" id="komentarz" rows="1" cols="84" placeholder="Krótki komentarz" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz'"></textarea>
+							<textarea name="comment" id="comment" rows="1" cols="84" placeholder="Krótki komentarz" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz'"></textarea>
 						</div>
 						<div style="text-align: center">
-							<input type="submit" value="Dodaj wydatek"> 
-							<input type="button" value="Anuluj"> 
+							<input id="expense_submit" type="submit" value="Dodaj wydatek"> 
+							<input id="expense_button" type="button" value="Anuluj"> 
 						</div>					
 					</form>
 				</div>
 			</div>
 		</main>
-		<footer>
+		<footer id="footer">
 			2020 &copy; Wszelkie prawa zastrzeżone 
 			<i class="icon-mail"></i> katarzyna.niemiec.programista@gmail.com
 	     </footer>

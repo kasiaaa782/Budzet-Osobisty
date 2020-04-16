@@ -11,6 +11,8 @@ body{
 		padding:0;
 		margin: 0;
 		height: 100%;
+		font-size: 15px;
+		overflow-x: hidden;
 }
 
 #wrapper{
@@ -87,7 +89,7 @@ h2{
 		box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 }
 
-input[type=text],
+#name,
 input[type=email],
 input[type=password]{
 	width: 400px;
@@ -103,7 +105,7 @@ input[type=password]{
 	font-family: 'Roboto Slab', serif;
 }
 
-input[type=text]:focus, input[type=text]:hover,
+#name:focus, #name:hover,
 input[type=email]:focus, input[type=email]:hover,
 input[type=password]:focus, input[type=password]:hover{
 	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
@@ -114,7 +116,7 @@ input[type=password]:focus, input[type=password]:hover{
 	color: #0259B0;
 }
 
-input[type=submit]{
+#submit_log{
 	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -132,13 +134,7 @@ input[type=submit]{
 	font-family: 'Roboto Slab', serif;
 }
 
-input[type=submit]:focus{
-	-webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-}
-
-input[type=submit]:hover{
+#submit_log:hover{
 	background-color: #2E8FF1;
 }
 
@@ -169,6 +165,7 @@ a:hover{
 	font-weight: bold;
 }
 
+/*menu*/
 nav{
 	width: 100%;
 	padding: 5px 0;
@@ -199,6 +196,8 @@ ol a {
 ol > li{
 	float: left;
 	width: 170px;
+	margin-top:3px;
+	margin-bottom:2px;
 	border-right: 1px dashed rgb(97, 176, 240);
 }
 
@@ -210,3 +209,117 @@ ol > li:hover{
 	background-color: #4CA0F5 ;
 }
 
+/*expense*/
+#content_inside
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#sentence_expense{
+	margin-top: 8px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 18px;
+	text-shadow: 0.3px 0.3px #0072E3;
+}
+
+#title_expense{
+		text-shadow: 0.7px 0.7px #0072E3;
+		font-size: 28px;
+		font-weight: 700;
+		text-align: center;
+		padding: 0;
+		margin: 0;
+}
+
+#content_expense{
+		background-color: #8DBCEB;
+		padding: 10px 0px 10px 0px;
+		border: 1px solid #9EBDDB;
+		opacity: 0.8;
+		margin-top: 25px;
+		margin-bottom: 15px;
+		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		display:flex;
+		flex-direction: column;
+}
+
+#comment{
+	margin-top: 15px;
+	resize: none;
+	padding: 5px;
+    color: #003F7F;
+	border: 2px solid #BCCAE8;
+	border-radius: 5px;
+	outline:none;
+	font-family: 'Roboto Slab', serif;
+	letter-spacing: 2px;
+	font-size: 12px;
+}
+
+#comment:hover{
+	border-color: #9EBDDB;
+}
+
+#comment:focus{
+	border-color: #9EBDDB;
+
+}
+
+.categories{
+		display: inline-block;
+		margin-left: 13px;
+}
+
+
+#payment{
+	text-align: center;
+
+}
+
+#amount, #data{
+	width:130px;
+	padding: 5px;
+    margin-left: 10px;
+    color: #003F7F;
+	border: 2px solid #BCCAE8;
+	border-radius: 5px;
+	outline:none;
+	height:17px;
+}
+
+#amount:hover, #amount:focus,
+#data:hover, #data:focus
+{
+	border-color: #9EBDDB;
+}
+
+#amount_data_inputs{
+	margin-left:80px;
+}
+
+#expense_submit,
+#expense_button{
+	background-color: #1A78D6;
+	font-size:15px;
+	color: white;
+	padding: 5px 5px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 1px;
+	outline: none;
+	margin-top: 5px;
+	width:150px;
+	margin-right: 25px;
+	margin-left: 30px;
+	font-family: 'Roboto Slab', serif
+}
+
+#expense_submit:hover,
+#expense_button:hover{
+	background-color: #2E8FF1;
+}

@@ -42,7 +42,7 @@ input[type=button]:hover
 }
 
 
-#komentarz
+#comment
 {
 	margin-top: 15px;
 	resize: none;
@@ -57,21 +57,15 @@ input[type=button]:hover
 
 }
 
-#komentarz:hover
+#comment:hover
 {
 	border-color: #9EBDDB;
 }
 
-#komentarz:focus
+#comment:focus
 {
 	border-color: #9EBDDB;
 
-}
-
-#kom
-{
-	margin-top:10px;
-	margin-bottom: 5px;
 }
 
 .categories
@@ -81,7 +75,7 @@ input[type=button]:hover
 }
 
 
-#platnosc
+#payment
 {
 	text-align: center;
 
@@ -112,7 +106,7 @@ input[type=date]:hover, input[type=date]:focus
 	margin-right: auto;
 }
 
-.sentence
+#sentence_expense
 {
 		margin-top: 8px;
 		margin-bottom: 10px;
@@ -132,7 +126,7 @@ input[type=date]:hover, input[type=date]:focus
 
 }
 
-#content
+#content_expense
 {
 		background-color: #8DBCEB;
 		padding: 10px 0px 10px 0px;
@@ -187,10 +181,9 @@ h4
 h2
 {
 	margin: 0;
-	letter-spacing: 2px;
-	font-size: 45px;
+	letter-spacing: 1px;
+	font-size: 40px;
 }
-
 footer
 {
 	width:100%;
