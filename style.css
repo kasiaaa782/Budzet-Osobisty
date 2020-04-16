@@ -1,11 +1,9 @@
-html
-{
+html{
 	height:100vh;
 	width:100vw;
 }
 
-body
-{
+body{
 		/* Background pattern from Toptal Subtle Patterns */
 		background-image: url("img/handmadepaper.png");
 		font-family: 'Roboto Slab', serif;
@@ -15,63 +13,55 @@ body
 		height: 100%;
 }
 
-#wrapper
-{
+#wrapper{
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100%;
 }
 
-#header
-{
+#header{
 		background-color: #4CA0F5;
 		padding: 3px 0;
 		opacity: 0.55;
 }
 
-h1
-{
+h1{
 	margin: 10px;
 	font-size: 40px;
 	text-transform: uppercase;	
 	font-weight: 700;
 }
 
-h4
-{
+h4{
 	margin: 10px;
 	font-size: 18px;
 	font-style: italic;
 }
 
-#logo
-{
+#logo{
 		text-align: center;
 		letter-spacing: 4px;
 		text-shadow: 0.8px 0.8px #0C255C;
 }
 
-h2
-{
+h2{
 	margin: 0;
-	letter-spacing: 3px;
+	letter-spacing: 1px;
 	font-size: 45px;
 }
 
-#sentence
-{
-		width: 400px;
+#sentence{
+		width: 350px;
 		padding: 5px;
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-top: 8px;
+		margin-bottom: 8px;
 		margin-left: auto;
 		margin-right: auto;
 		font-size: 20px;
 }
 
-#content
-{
+#content{
 		width: 550px;
 		margin-left: auto;
 		margin-right: auto;
@@ -91,8 +81,7 @@ h2
 
 input[type=text],
 input[type=email],
-input[type=password]
-{
+input[type=password]{
 	width: 400px;
 	background-color: #efefef;
 	color: #0259B0;
@@ -108,8 +97,7 @@ input[type=password]
 
 input[type=text]:focus, input[type=text]:hover,
 input[type=email]:focus, input[type=email]:hover,
-input[type=password]:focus, input[type=password]:hover
-{
+input[type=password]:focus, input[type=password]:hover{
 	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
 	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
 	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
@@ -118,15 +106,14 @@ input[type=password]:focus, input[type=password]:hover
 	color: #0259B0;
 }
 
-input[type=submit]
-{
-	width: 230px;
+input[type=submit]{
+	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #1A78D6;
 	font-size:20px;
 	color: white;
-	padding: 15px 10px;
+	padding: 10px 5px;
 	margin-top: 20px;
 	border: none;
 	border-radius: 5px;
@@ -137,20 +124,17 @@ input[type=submit]
 	font-family: 'Roboto Slab', serif;
 }
 
-input[type=submit]:focus
-{
+input[type=submit]:focus{
 	-webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
 }
 
-input[type=submit]:hover
-{
+input[type=submit]:hover{
 	background-color: #2E8FF1;
 }
 
-#footer
-{
+#footer{
 	width:100%;
 	background-color: #0F5296;
 	text-align: center;
@@ -160,19 +144,16 @@ input[type=submit]:hover
 	margin-top:8px;
 }
 
-a:link
-{
+a:link{
 	color: #FFFFFF;
 	text-decoration:none;
 }
 
-a:visited
-{
+a:visited{
 	color: #FFFFFF;
 }
 
-a:hover
-{
+a:hover{
 	color: #FFFFFF;
 	font-weight:bold;
 }
