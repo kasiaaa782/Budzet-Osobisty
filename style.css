@@ -4,15 +4,15 @@ html{
 }
 
 body{
-		/* Background pattern from Toptal Subtle Patterns */
-		background-image: url("img/handmadepaper.png");
-		font-family: 'Roboto Slab', serif;
-		color: white;
-		padding:0;
-		margin: 0;
-		height: 100%;
-		font-size: 15px;
-		overflow-x: hidden;
+	/* Background pattern from Toptal Subtle Patterns */
+	background-image: url("img/handmadepaper.png");
+	font-family: 'Roboto Slab', serif;
+	color: white;
+	padding:0;
+	margin: 0;
+	height: 100%;
+	font-size: 15px;
+	overflow-x: hidden;
 }
 
 #wrapper{
@@ -92,60 +92,60 @@ h2{
 #name,
 input[type=email],
 input[type=password]{
-	width: 400px;
-	background-color: #efefef;
-	color: #0259B0;
-	border: 2px solid #BCCAE8;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 10px;
-	box-sizing: border-box;
-	outline: none;
-	margin-top: 10px;
-	font-family: 'Roboto Slab', serif;
+		width: 400px;
+		background-color: #efefef;
+		color: #0259B0;
+		border: 2px solid #BCCAE8;
+		border-radius: 5px;
+		font-size: 20px;
+		padding: 10px;
+		box-sizing: border-box;
+		outline: none;
+		margin-top: 10px;
+		font-family: 'Roboto Slab', serif;
 }
 
 #name:focus, #name:hover,
 input[type=email]:focus, input[type=email]:hover,
 input[type=password]:focus, input[type=password]:hover{
-	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	border: 2px solid #9EBDDB;
-	border-radius: 5px;
-	color: #0259B0;
+		-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+		-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+		box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+		border: 2px solid #9EBDDB;
+		border-radius: 5px;
+		color: #0259B0;
 }
 
 #submit_log{
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: #1A78D6;
-	font-size:20px;
-	color: white;
-	padding: 10px 5px;
-	margin-top: 20px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	letter-spacing: 1px;
-	outline: none;
-	margin-bottom: 15px;
-	font-family: 'Roboto Slab', serif;
+		width: 200px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #1A78D6;
+		font-size:20px;
+		color: white;
+		padding: 10px 5px;
+		margin-top: 20px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		letter-spacing: 1px;
+		outline: none;
+		margin-bottom: 15px;
+		font-family: 'Roboto Slab', serif;
 }
 
 #submit_log:hover{
-	background-color: #2E8FF1;
+		background-color: #2E8FF1;
 }
 
 #footer{
-	width:100%;
-	background-color: #0F5296;
-	text-align: center;
-	padding: 5px 0;
-	font-size: 11px;
-	opacity: 0.8;
-	margin-top:8px;
+		width:100%;
+		background-color: #0F5296;
+		text-align: center;
+		padding: 5px 0;
+		font-size: 11px;
+		opacity: 0.8;
+		margin-top:8px;
 }
 
 a:link{
@@ -162,7 +162,7 @@ a:hover{
 }
 
 #attention:hover{
-	font-weight: bold;
+		font-weight: bold;
 }
 
 /*menu*/
@@ -210,21 +210,20 @@ ol > li:hover{
 }
 
 /*expense*/
-#content_inside
-{
-	margin-left: auto;
-	margin-right: auto;
+#content_inside{
+		margin-left: auto;
+		margin-right: auto;
 }
 
 #sentence_expense{
-	margin-top: 8px;
-	margin-bottom: 10px;
-	text-align: center;
-	font-size: 18px;
-	text-shadow: 0.3px 0.3px #0072E3;
+		margin-top: 8px;
+		margin-bottom: 10px;
+		text-align: center;
+		font-size: 18px;
+		text-shadow: 0.3px 0.3px #0072E3;
 }
 
-#title_expense{
+#title{
 		text-shadow: 0.7px 0.7px #0072E3;
 		font-size: 28px;
 		font-weight: 700;
@@ -248,24 +247,24 @@ ol > li:hover{
 }
 
 #comment{
-	margin-top: 15px;
-	resize: none;
-	padding: 5px;
-    color: #003F7F;
-	border: 2px solid #BCCAE8;
-	border-radius: 5px;
-	outline:none;
-	font-family: 'Roboto Slab', serif;
-	letter-spacing: 2px;
-	font-size: 12px;
+		margin-top: 15px;
+		resize: none;
+		padding: 5px;
+		color: #003F7F;
+		border: 2px solid #BCCAE8;
+		border-radius: 5px;
+		outline:none;
+		font-family: 'Roboto Slab', serif;
+		letter-spacing: 2px;
+		font-size: 12px;
 }
 
 #comment:hover{
-	border-color: #9EBDDB;
+		border-color: #9EBDDB;
 }
 
 #comment:focus{
-	border-color: #9EBDDB;
+		border-color: #9EBDDB;
 
 }
 
@@ -276,50 +275,235 @@ ol > li:hover{
 
 
 #payment{
-	text-align: center;
-
+		text-align: center;
 }
 
 #amount, #data{
-	width:130px;
-	padding: 5px;
-    margin-left: 10px;
-    color: #003F7F;
-	border: 2px solid #BCCAE8;
-	border-radius: 5px;
-	outline:none;
-	height:17px;
+		width:130px;
+		padding: 5px;
+		margin-left: 10px;
+		color: #003F7F;
+		border: 2px solid #BCCAE8;
+		border-radius: 5px;
+		outline:none;
+		height:17px;
 }
 
 #amount:hover, #amount:focus,
-#data:hover, #data:focus
-{
-	border-color: #9EBDDB;
+#data:hover, #data:focus{
+		border-color: #9EBDDB;
 }
 
 #amount_data_inputs{
-	margin-left:80px;
+		margin-left:80px;
 }
 
 #expense_submit,
 #expense_button{
-	background-color: #1A78D6;
-	font-size:15px;
-	color: white;
-	padding: 5px 5px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	letter-spacing: 1px;
-	outline: none;
-	margin-top: 5px;
-	width:150px;
-	margin-right: 25px;
-	margin-left: 30px;
-	font-family: 'Roboto Slab', serif
+		background-color: #1A78D6;
+		font-size:15px;
+		color: white;
+		padding: 5px 5px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		letter-spacing: 1px;
+		outline: none;
+		margin-top: 5px;
+		width:150px;
+		margin-right: 25px;
+		margin-left: 30px;
+		font-family: 'Roboto Slab', serif
 }
 
 #expense_submit:hover,
 #expense_button:hover{
-	background-color: #2E8FF1;
+		background-color: #2E8FF1;
+}
+
+/*balance*/
+#content_balance{
+		background-color: #8DBCEB;
+		padding: 15px 0px 15px 0px;
+		border: 1px solid #9EBDDB;
+		opacity: 0.8;
+		margin-top: 25px;
+		margin-bottom: 15px;
+		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+}
+
+.table_name{
+		display: block;
+		margin-bottom: 10px ;
+		font-size: 15px;
+		letter-spacing: 1px;
+		font-weight: bold;
+}
+
+#select_period_dropdown{
+		position:absolute;
+		margin-left: 330px;
+}
+
+#dropbutton{
+		min-width: 170px;
+		padding: 10px 16px 10px 16px ;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+		background-color: #1A78D6;
+		color: white;
+		outline: none;
+		font-family: 'Roboto Slab', serif;
+}
+
+#dropdown-content{
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 170px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+}
+
+#dropdown-content a{
+		color: #003F7F;
+		padding: 10px 16px;
+		text-decoration: none;
+		display: block;
+		border-top: 1px dashed rgb(97, 176, 240);
+}
+
+#dropdown-content a:first-child{
+		border-top: none;
+}
+
+#dropdown-content a:hover {
+		background-color: #e5eaf1;
+}
+
+#select_period_dropdown:hover
+#dropdown-content{
+		display: block;
+}	
+
+#select_period_dropdown:hover,
+#dropbutton {
+		background-color:rgb(42, 128, 214);
+}
+
+#period{
+		margin-top: 8px;
+		margin-bottom: 15px;
+		text-align: center;
+		font-size: 18px;
+		text-shadow: 0.3px 0.3px #0072E3;
+}
+
+#show{
+		background-color: #1A78D6;
+		font-family: 'Roboto Slab', serif;
+		font-size:15px;
+		color: white;
+		padding: 5px;
+		border: none;
+		cursor: pointer;
+		letter-spacing: 1px;
+		outline: none;
+		margin-top: 15px;
+		width:100px;
+		margin-left: 133px;
+}
+
+#show:hover{
+		background-color: #2E8FF1;
+}
+
+#selectPeriod{
+		margin-bottom: 13px;
+		margin-left: 5px;
+		display: block;
+}
+
+#dateBegin, #dateEnd{
+		width:130px;
+		padding: 5px;
+		margin-left: 10px;
+		margin-right: 10px;
+		color: #003F7F;
+		border: 2px solid #BCCAE8;
+		border-radius: 5px;
+		outline:none;
+		height:17px;
+}
+
+#dateBegin:hover, #dateBegin:focus,
+#dateEnd:hover, #dateEnd:focus{
+		border-color: #9EBDDB;
+}
+
+.sum{
+		font-weight: bold;
+}
+
+table, th, td {
+	border: 1px solid #1A78D6;
+	border-collapse: collapse;
+}	
+
+th, td {
+	padding: 6px;
+	padding-left: 15px;
+}
+
+#salary,#bankInterest,#allegro,#otherIncome,#sumOfIncomes,
+#eat,#accommodation,#transport,#telecommunication,#healthcare,
+#clothes,#hygiene,#kids,#entertainment,#trip,#training,
+#books,#savings,#pension,#debts,#donation,#otherExpenses,
+#sumOfExpenses{
+		text-align: right;
+}
+
+table{
+	margin-bottom: 20px;
+	width: 400px;
+	background-color: #568cf0;
+}
+
+#piechart{
+		border: 1px solid #1A78D6;
+}
+
+#result{
+		font-size: large;
+}
+
+#balance{
+		background-color: #ffffff;
+		color: rgb(18, 98, 179);
+		margin-top:20px;
+		margin-bottom:10px;
+		width: 400px;
+		border: 1px solid #1A78D6;
+		padding: 10px;
+		text-align: center;
+}
+
+#balance1{
+		font-size: 18px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+}
+
+#score{
+		color: rgb(15, 110, 206);
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: 10px;
 }

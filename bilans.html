@@ -5,15 +5,15 @@
 	<title>Budżet osobisty</title>
 	<meta name="description" content="Chcesz zapanować nad finansami? Załóż swój osobisty budżet! Sprawdź, jak to zrobić!" />
 	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	
-	<link rel="stylesheet" href="bilans.css" type="text/css" />
-	<link rel="stylesheet" href="css\money.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
 
 	<!--Wykorzystane do PieChart - wykresu-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript" src="wydatek.js"></script>
+	<script type="text/javascript" src="budget.js"></script>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 			</nav>
 		</header>
 		<main>
-			<div id="content">
+			<div id="content_balance">
 				<div id="title">Bilans finansowy</div>
 				<div id="select_period_dropdown">
 					<button id="dropbutton">Wybierz okres</button>
@@ -52,10 +52,10 @@
 				<div id="selectPeriod">	
 					od <input type="date" id="dateBegin">
 					do <input type="date" id="dateEnd">
-					<div><input type="submit" value="Pokaż"></div>
+					<div><input id="show" type="submit" value="Pokaż"></div>
 				</div>
+				<div class="table_name">PRZYCHODY</div>
 				<div>
-					<p1>PRZYCHODY</p1>
 					<table>
 						<tr>
 							<th>Kategoria</th>
@@ -83,9 +83,9 @@
 						</tr>
 					</table> 
 				</div>
+				<div class="table_name">WYDATKI</div>
 				<div>
-					<p1>WYDATKI</p1>
-					<table>
+						<table>
 						<tr>
 							<th>Kategoria</th>
 							<th>Kwota</th>
@@ -172,7 +172,7 @@
 				</div>
 			</div>
 		</main>
-		<footer>
+		<footer id="footer">
 			2020 &copy; Wszelkie prawa zastrzeżone 
 			<i class="icon-mail"></i> katarzyna.niemiec.programista@gmail.com
 	     </footer>
