@@ -11,7 +11,7 @@ body{
 	padding:0;
 	margin: 0;
 	height: 100%;
-	font-size: 15px;
+	font-size: 17px;
 	overflow-x: hidden;
 }
 
@@ -204,31 +204,21 @@ ol > li:hover{
 }
 
 /*expense*/
-#content_inside{
-		margin-left: auto;
-		margin-right: auto;
-}
-
 #sentence_expense{
-		margin-top: 8px;
-		margin-bottom: 10px;
-		text-align: center;
-		font-size: 18px;
+		font-size: 20px;
 		text-shadow: 0.3px 0.3px #0072E3;
+		margin: 10px;
 }
 
 #title{
 		text-shadow: 0.7px 0.7px #0072E3;
-		font-size: 28px;
+		font-size: 32px;
 		font-weight: 700;
-		text-align: center;
-		padding: 0;
-		margin: 0;
 }
 
 #content_expense{
 		background-color: #8DBCEB;
-		padding: 10px 0px 10px 0px;
+		padding: 20px 0px 20px 0px;
 		border: 1px solid #9EBDDB;
 		opacity: 0.8;
 		margin-top: 25px;
@@ -236,14 +226,28 @@ ol > li:hover{
 		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 		-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 		box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-		display:flex;
-		flex-direction: column;
+		text-align: center;
+}
+
+#amount, #data{
+		width: 160px;
+		height: 30px;
+		padding: 5px;
+		color: #003F7F;
+		border: 2px solid #BCCAE8;
+		border-radius: 5px;
+		outline:none;
+}
+
+.categories{
+	text-align: left;
+	margin: 0px 15px 0px 15px;	
 }
 
 #comment{
-		margin-top: 15px;
 		resize: none;
 		padding: 5px;
+		margin: 5px;
 		color: #003F7F;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
@@ -262,34 +266,9 @@ ol > li:hover{
 
 }
 
-.categories{
-		display: inline-block;
-		margin-left: 13px;
-}
-
-
-#payment{
-		text-align: center;
-}
-
-#amount, #data{
-		width:130px;
-		padding: 5px;
-		margin-left: 10px;
-		color: #003F7F;
-		border: 2px solid #BCCAE8;
-		border-radius: 5px;
-		outline:none;
-		height:17px;
-}
-
 #amount:hover, #amount:focus,
 #data:hover, #data:focus{
 		border-color: #9EBDDB;
-}
-
-#amount_data_inputs{
-		margin-left:80px;
 }
 
 #expense_submit,
@@ -303,10 +282,7 @@ ol > li:hover{
 		cursor: pointer;
 		letter-spacing: 1px;
 		outline: none;
-		margin-top: 5px;
 		width:150px;
-		margin-right: 25px;
-		margin-left: 30px;
 		font-family: 'Roboto Slab', serif
 }
 
