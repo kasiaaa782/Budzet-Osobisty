@@ -157,8 +157,8 @@ a:hover{
 /*menu*/
 .navbar{
 	min-height: 64px;
-	background-color: rgb(48, 141, 235);
-	opacity: 0.7;
+	background-color: #1A78D6;
+	opacity: 0.8;
 	border-top: 1px solid rgb(97, 176, 240);
 	border-bottom: 1px solid rgb(97, 176, 240);
 	text-align: center;
@@ -302,9 +302,6 @@ ol > li:hover{
 		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 		-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 		box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
-		display:flex;
-		flex-direction: column;
-		align-items: center;
 }
 
 .table_name{
@@ -313,15 +310,11 @@ ol > li:hover{
 		font-size: 15px;
 		letter-spacing: 1px;
 		font-weight: bold;
-}
-
-#select_period_dropdown{
-		position:absolute;
-		margin-left: 330px;
+		text-align: center;
 }
 
 #dropbutton{
-		min-width: 170px;
+		min-width: 180px;
 		padding: 10px 16px 10px 16px ;
 		font-size: 16px;
 		border: none;
@@ -370,7 +363,6 @@ ol > li:hover{
 #period{
 		margin-top: 8px;
 		margin-bottom: 15px;
-		text-align: center;
 		font-size: 18px;
 		text-shadow: 0.3px 0.3px #0072E3;
 }
@@ -387,7 +379,6 @@ ol > li:hover{
 		outline: none;
 		margin-top: 15px;
 		width:100px;
-		margin-left: 133px;
 }
 
 #show:hover{
@@ -396,12 +387,12 @@ ol > li:hover{
 
 #selectPeriod{
 		margin-bottom: 13px;
-		margin-left: 5px;
 		display: block;
 }
 
 #dateBegin, #dateEnd{
-		width:130px;
+		width:160px;
+		height: 30px;
 		padding: 5px;
 		margin-left: 10px;
 		margin-right: 10px;
@@ -409,7 +400,6 @@ ol > li:hover{
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
 		outline:none;
-		height:17px;
 }
 
 #dateBegin:hover, #dateBegin:focus,
@@ -422,7 +412,7 @@ ol > li:hover{
 }
 
 table, th, td {
-	border: 1px solid #1A78D6;
+	border: 1px solid #1167bd;
 	border-collapse: collapse;
 }	
 
@@ -442,11 +432,7 @@ th, td {
 table{
 	margin-bottom: 20px;
 	width: 400px;
-	background-color: #568cf0;
-}
-
-#piechart{
-		border: 1px solid #1A78D6;
+	background-color:  #1A78D6;
 }
 
 #result{
@@ -454,14 +440,14 @@ table{
 }
 
 #balance{
+		width: 400px;
 		background-color: #ffffff;
 		color: rgb(18, 98, 179);
 		margin-top:20px;
 		margin-bottom:10px;
-		width: 400px;
 		border: 1px solid #1A78D6;
 		padding: 10px;
-		text-align: center;
+ 		text-align: center;
 }
 
 #balance1{
@@ -476,4 +462,8 @@ table{
 		font-size: 16px;
 		font-weight: bold;
 		margin-top: 10px;
+}
+
+#piechart{
+		border: 1px solid #1A78D6;
 }
