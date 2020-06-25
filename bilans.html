@@ -2,11 +2,13 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Budżet osobisty</title>
 	<meta name="description" content="Chcesz zapanować nad finansami? Załóż swój osobisty budżet! Sprawdź, jak to zrobić!" />
 	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
@@ -25,150 +27,165 @@
 					<h4>Zapanuj nad swoimi finansami</h4>
 				</div>
 			</div>
-			<nav>
-				<ol>
-					<li><a href="#">Strona główna</a></li>
-					<li><a href="#">Dodaj przychód</a></li>
-					<li><a href="#">Dodaj wydatek</a></li>
-					<li><a href="#">Przeglądaj bilans</a></li>
-					<li><a href="#">Ustawienia</a></li>
-					<li><a href="#">Wyloguj się</a></li>
-				</ol>
+			<nav class="navbar navbar-dark navbar-expand-lg">
+				<button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mainmenu" >
+					<ol class="navbar-nav mx-auto">
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Strona główna</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Dodaj przychód</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Dodaj wydatek</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Przeglądaj bilans</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="#">Wyloguj się</a></li>
+					</ol>
+				</div>
 			</nav>
 		</header>
 		<main>
 			<div id="content_balance">
-				<div id="title">Bilans finansowy</div>
-				<div id="select_period_dropdown">
-					<button id="dropbutton">Wybierz okres</button>
-					<div id="dropdown-content">
-						<a href="#" onclick="selectPeriod(1)">Bieżący miesiąc</a>
-						<a href="#" onclick="selectPeriod(2)">Poprzedni miesiąc</a>
-						<a href="#" onclick="selectPeriod(3)">Bieżący rok</a>
-						<a href="#" onclick="selectPeriod(4)">Niestandardowy</a>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-4 text-center" id="title">Bilans finansowy</div>
+						<div class="mb-3 mt-3 mt-md-0 ml-md-3" id="select_period_dropdown">
+							<button id="dropbutton">Wybierz okres</button>
+							<div id="dropdown-content">
+								<a href="#" onclick="selectPeriod(1)">Bieżący miesiąc</a>
+								<a href="#" onclick="selectPeriod(2)">Poprzedni miesiąc</a>
+								<a href="#" onclick="selectPeriod(3)">Bieżący rok</a>
+								<a href="#" onclick="selectPeriod(4)">Niestandardowy</a>
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-12 text-center" id="period">Za okres od 01.04.2020 do 31.04.2020</div>
+						<div id="selectPeriod">	
+							od <input type="date" id="dateBegin">
+							do <input type="date" id="dateEnd">
+							<div class="text-center"><input id="show" type="submit" value="Pokaż"></div>
+						</div>
 					</div>
 				</div>
-				<div id="period">Za okres od 01.04.2020 do 31.04.2020</div>
-				<div id="selectPeriod">	
-					od <input type="date" id="dateBegin">
-					do <input type="date" id="dateEnd">
-					<div><input id="show" type="submit" value="Pokaż"></div>
-				</div>
-				<div class="table_name">PRZYCHODY</div>
-				<div>
-					<table>
-						<tr>
-							<th>Kategoria</th>
-							<th>Kwota</th>
-						</tr>
-						<tr>
-							<td>Wynagrodzenie</td>
-							<td id="salary">3000.00</td>
-						</tr>
-						<tr>
-							<td>Odsetki bankowe</td>
-							<td id="bankInterest">0.00</td>
-						</tr>
-						<tr>
-							<td>Sprzedaż na allegro</td>
-							<td id="allegro">250.35</td>
-						</tr>
-						<tr>
-							<td>Inne</td>
-							<td id="otherIncome">300.50</td>
-						</tr>
-						<tr class="sum">
-							<td>Suma</td>
-							<td id="sumOfIncomes">0.00</td>
-						</tr>
-					</table> 
-				</div>
-				<div class="table_name">WYDATKI</div>
-				<div>
+				<div class="container">
+					<div class="table_name">PRZYCHODY</div>
+					<div class="row justify-content-center">
 						<table>
-						<tr>
-							<th>Kategoria</th>
-							<th>Kwota</th>
-						</tr>
-						<tr>
-							<td>Jedzenie</td>
-							<td id="eat">300.50</td>
-						</tr>
-						<tr>
-							<td>Mieszkanie</td>
-							<td id="accommodation">1200.50</td>
-						</tr>
-						<tr>
-							<td>Transport</td>
-							<td id="transport">189.00</td>
-						</tr>
-						<tr>
-							<td>Telekomunikacja</td>
-							<td id="telecommunication">34.76</td>
-						</tr>
-						<tr>
-							<td>Opieka zdrowotna</td>
-							<td id="healthcare">0.00</td>
-						</tr>
-						<tr>
-							<td>Ubrania</td>
-							<td id="clothes">80.00</td>
-						</tr>
-						<tr>
-							<td>Higiena</td>
-							<td id="hygiene">25.00</td>
-						</tr>
-						<tr>
-							<td>Dzieci</td>
-							<td id="kids">0.00</td>
-						</tr>
-						<tr>
-							<td>Rozrywka</td>
-							<td id="entertainment">10.00</td>
-						</tr>
-						<tr>
-							<td>Wycieczka</td>
-							<td id="trip">0.00</td>
-						</tr>
-						<tr>
-							<td>Szkolenia</td>
-							<td id="training">0.00</td>
-						</tr>
-						<tr>
-							<td>Książka</td>
-							<td id="books">32.00</td>
-						</tr>
-						<tr>
-							<td>Oszczędności</td>
-							<td id="savings">0.00</td>
-						</tr>
-						<tr>
-							<td>Na emeryturę</td>
-							<td id="pension">0.00</td>
-						</tr>
-						<tr>
-							<td>Spłata długów</td>
-							<td id="debts">0.00</td>
-						</tr>
-						<tr>
-							<td>Darowizna</td>
-							<td id="donation">15.00</td>
-						</tr>
-						<tr>
-							<td>Inne wydatki</td>
-							<td id="otherExpenses">166.00</td>
-						</tr>
-						<tr class="sum">
-							<td>Suma</td>
-							<td id="sumOfExpenses">0.00</td>
-						</tr>
-					</table> 
-				</div>
-				<div id="piechart"></div>
-				<div id="balance">
-					<div id="balance1">BILANS</div>
-					<div id="result">0.00</div>
-					<div id="score">Gratulacje. Świetnie zarządzasz finansami!</div>
+							<tr>
+								<th>Kategoria</th>
+								<th>Kwota</th>
+							</tr>
+							<tr>
+								<td>Wynagrodzenie</td>
+								<td id="salary">3000.00</td>
+							</tr>
+							<tr>
+								<td>Odsetki bankowe</td>
+								<td id="bankInterest">0.00</td>
+							</tr>
+							<tr>
+								<td>Sprzedaż na allegro</td>
+								<td id="allegro">250.35</td>
+							</tr>
+							<tr>
+								<td>Inne</td>
+								<td id="otherIncome">300.50</td>
+							</tr>
+							<tr class="sum">
+								<td>Suma</td>
+								<td id="sumOfIncomes">0.00</td>
+							</tr>
+						</table> 
+					</div>
+					<div class="table_name">WYDATKI</div>
+					<div class="row justify-content-center">
+							<table>
+							<tr>
+								<th>Kategoria</th>
+								<th>Kwota</th>
+							</tr>
+							<tr>
+								<td>Jedzenie</td>
+								<td id="eat">300.50</td>
+							</tr>
+							<tr>
+								<td>Mieszkanie</td>
+								<td id="accommodation">1200.50</td>
+							</tr>
+							<tr>
+								<td>Transport</td>
+								<td id="transport">189.00</td>
+							</tr>
+							<tr>
+								<td>Telekomunikacja</td>
+								<td id="telecommunication">34.76</td>
+							</tr>
+							<tr>
+								<td>Opieka zdrowotna</td>
+								<td id="healthcare">0.00</td>
+							</tr>
+							<tr>
+								<td>Ubrania</td>
+								<td id="clothes">80.00</td>
+							</tr>
+							<tr>
+								<td>Higiena</td>
+								<td id="hygiene">25.00</td>
+							</tr>
+							<tr>
+								<td>Dzieci</td>
+								<td id="kids">0.00</td>
+							</tr>
+							<tr>
+								<td>Rozrywka</td>
+								<td id="entertainment">10.00</td>
+							</tr>
+							<tr>
+								<td>Wycieczka</td>
+								<td id="trip">0.00</td>
+							</tr>
+							<tr>
+								<td>Szkolenia</td>
+								<td id="training">0.00</td>
+							</tr>
+							<tr>
+								<td>Książka</td>
+								<td id="books">32.00</td>
+							</tr>
+							<tr>
+								<td>Oszczędności</td>
+								<td id="savings">0.00</td>
+							</tr>
+							<tr>
+								<td>Na emeryturę</td>
+								<td id="pension">0.00</td>
+							</tr>
+							<tr>
+								<td>Spłata długów</td>
+								<td id="debts">0.00</td>
+							</tr>
+							<tr>
+								<td>Darowizna</td>
+								<td id="donation">15.00</td>
+							</tr>
+							<tr>
+								<td>Inne wydatki</td>
+								<td id="otherExpenses">166.00</td>
+							</tr>
+							<tr class="sum">
+								<td>Suma</td>
+								<td id="sumOfExpenses">0.00</td>
+							</tr>
+						</table> 
+					</div>
+					<div class="row justify-content-center">
+						<div id="piechart"></div>
+					</div>
+					<div class="mx-auto" id="balance">
+						<div id="balance1">BILANS</div>
+						<div id="result">0.00</div>
+						<div id="score">Gratulacje. Świetnie zarządzasz finansami!</div>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -176,6 +193,10 @@
 			2020 &copy; Wszelkie prawa zastrzeżone 
 			<i class="icon-mail"></i> katarzyna.niemiec.programista@gmail.com
 	     </footer>
-	</div>		
+	</div>	
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
