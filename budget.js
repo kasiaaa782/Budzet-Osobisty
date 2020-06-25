@@ -61,6 +61,15 @@ function getDaysNumberOfMonth(month, year)
 	return daysNumber;
 }
 
+function changeDateFormat(uncorrectDate){
+	var year, month, day, correctDate;
+	year = uncorrectDate.substr(0,4);
+	month = uncorrectDate.substr(5,2);
+	day = uncorrectDate.substr(8,2);
+	correctDate = day + "." + month + "." + year;
+	return correctDate;
+}
+
 function selectPeriod(option)
 {
 	var today = new Date();
@@ -75,22 +84,23 @@ function selectPeriod(option)
 	{
 		case 1: //current month
 			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
-			document.getElementById("selectPeriod").style.display = "none";
+			document.getElementById("selectPeriod").style.display = "block";
 			break;
 		case 2: //previous month
 			month = parseInt(month) - 1;
 			month = (month.toString().length === 1) ? '0' + month : month;
 			sentence = "Za okres od 01."+month+"."+year+" do "+getDaysNumberOfMonth(parseInt(month),parseInt(year))+"."+month+"."+year;
-			document.getElementById("selectPeriod").style.display = "none";
+			document.getElementById("selectPeriod").style.display = "block";
 			break;
 		case 3: //current year
 			sentence = "Za okres od 01.01."+year+" do 31.12."+year;
-			document.getElementById("selectPeriod").style.display = "none";
-			break;		
-		case 4: //nonstandard
-			sentence = "Wybierz przedział czasowy";	
 			document.getElementById("selectPeriod").style.display = "block";
-			break
+			break;	
+		case 4: //nonstandard	
+			var beginDate = document.getElementById("dateBegin").value;
+			var endDate = document.getElementById("dateEnd").value;
+			sentence = "Za okres od " + changeDateFormat(beginDate.toString()) + " do " + changeDateFormat(endDate.toString());
+			break;
 	}
 	document.getElementById("period").innerHTML = sentence;
 }

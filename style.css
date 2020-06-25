@@ -7,7 +7,7 @@ body{
 	/* Background pattern from Toptal Subtle Patterns */
 	background-image: url("img/handmadepaper.png");
 	font-family: 'Roboto Slab', serif;
-	color: white;
+	color: #f9f9f9;
 	padding:0;
 	margin: 0;
 	height: 100%;
@@ -41,7 +41,7 @@ h4{
 		text-align: center;	
 		background-color: #4CA0F5;
 		padding: 3px 0;
-		opacity: 0.55;
+		opacity: 0.7;
 }
 
 h2{
@@ -158,7 +158,6 @@ a:hover{
 .navbar{
 	min-height: 64px;
 	background-color: #1A78D6;
-	opacity: 0.8;
 	border-top: 1px solid rgb(97, 176, 240);
 	border-bottom: 1px solid rgb(97, 176, 240);
 	text-align: center;
@@ -220,7 +219,6 @@ ol > li:hover{
 		background-color: #8DBCEB;
 		padding: 20px 0px 20px 0px;
 		border: 1px solid #9EBDDB;
-		opacity: 0.8;
 		margin-top: 25px;
 		margin-bottom: 15px;
 		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
@@ -296,7 +294,6 @@ ol > li:hover{
 		background-color: #8DBCEB;
 		padding: 15px 0px 15px 0px;
 		border: 1px solid #9EBDDB;
-		opacity: 0.8;
 		margin-top: 25px;
 		margin-bottom: 15px;
 		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
@@ -320,7 +317,7 @@ ol > li:hover{
 		border: none;
 		cursor: pointer;
 		background-color: #1A78D6;
-		color: white;
+		color: #f9f9f9;
 		outline: none;
 		font-family: 'Roboto Slab', serif;
 }
@@ -333,6 +330,7 @@ ol > li:hover{
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 1;
 }
+
 
 #dropdown-content a{
 		color: #003F7F;
@@ -367,11 +365,15 @@ ol > li:hover{
 		text-shadow: 0.3px 0.3px #0072E3;
 }
 
+#myModalLabel{
+		 font-style: normal;
+}
+
 #show{
 		background-color: #1A78D6;
 		font-family: 'Roboto Slab', serif;
 		font-size:15px;
-		color: white;
+		color: #f9f9f9;
 		padding: 5px;
 		border: none;
 		cursor: pointer;
@@ -386,7 +388,6 @@ ol > li:hover{
 }
 
 #selectPeriod{
-		margin-bottom: 13px;
 		display: block;
 }
 
@@ -412,7 +413,7 @@ ol > li:hover{
 }
 
 table, th, td {
-	border: 1px solid #1167bd;
+	border: 1px solid #9EBDDB;
 	border-collapse: collapse;
 }	
 
@@ -432,7 +433,7 @@ th, td {
 table{
 	margin-bottom: 20px;
 	width: 400px;
-	background-color:  #1A78D6;
+	background-color:  #1a78d6;
 }
 
 #result{
@@ -441,7 +442,7 @@ table{
 
 #balance{
 		width: 400px;
-		background-color: #ffffff;
+		background-color: #f9f9f9;
 		color: rgb(18, 98, 179);
 		margin-top:20px;
 		margin-bottom:10px;
@@ -466,4 +467,5 @@ table{
 
 #piechart{
 		border: 1px solid #1A78D6;
+		background-color: #f9f9f9;
 }

@@ -15,13 +15,16 @@
 
 	<!--Wykorzystane do PieChart - wykresu-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="budget.js"></script>
+
 
 </head>
 <body>
 	<div id="wrapper">
 		<header>
-			<div  id="header">
+			<div id="header">
 				<div id="logo">
 					<h1>Budżet osobisty</h1>
 					<h4>Zapanuj nad swoimi finansami</h4>
@@ -35,10 +38,10 @@
 					<ol class="navbar-nav mx-auto">
 						<li class="nav-item mx-auto"><a class="nav-link" href="#">Strona główna</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="#">Dodaj przychód</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="#">Dodaj wydatek</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="#">Przeglądaj bilans</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.html">Dodaj wydatek</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="bilans.html">Przeglądaj bilans</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="#">Wyloguj się</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="logowanie.html">Wyloguj się</a></li>
 					</ol>
 				</div>
 			</nav>
@@ -46,7 +49,7 @@
 		<main>
 			<div id="content_balance">
 				<div class="container">
-					<div class="row justify-content-center">
+					<div class="row justify-content-center mt-2">
 						<div class="col-md-4 text-center" id="title">Bilans finansowy</div>
 						<div class="mb-3 mt-3 mt-md-0 ml-md-3" id="select_period_dropdown">
 							<button id="dropbutton">Wybierz okres</button>
@@ -54,17 +57,35 @@
 								<a href="#" onclick="selectPeriod(1)">Bieżący miesiąc</a>
 								<a href="#" onclick="selectPeriod(2)">Poprzedni miesiąc</a>
 								<a href="#" onclick="selectPeriod(3)">Bieżący rok</a>
-								<a href="#" onclick="selectPeriod(4)">Niestandardowy</a>
+								<a href="#myModal" data-toggle="modal">Niestandardowy</a>
+							</div>
+							<!--Modal-->
+							<div class="modal fade text-body" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <h4 class="modal-title" id="myModalLabel">Wybierz przedział czasowy</h4>
+									  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+									  </button>
+									</div>
+									<div class="modal-body text-center mt-3 mb-3">
+									  	<div id="selectPeriod">	
+											od <input type="date" id="dateBegin">
+											do <input type="date" id="dateEnd">
+										</div>
+									</div>
+									<div class="modal-footer">
+									  <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+									  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="selectPeriod(4)">Pokaż</button>
+									</div>
+								  </div>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row justify-content-center">
 						<div class="col-12 text-center" id="period">Za okres od 01.04.2020 do 31.04.2020</div>
-						<div id="selectPeriod">	
-							od <input type="date" id="dateBegin">
-							do <input type="date" id="dateEnd">
-							<div class="text-center"><input id="show" type="submit" value="Pokaż"></div>
-						</div>
 					</div>
 				</div>
 				<div class="container">
