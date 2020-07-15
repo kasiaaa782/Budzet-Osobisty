@@ -60,12 +60,11 @@ h2{
 
 #content{
 		padding: 20px 60px 20px 60px;
-		background-color: #8DBCEB;
+		background-color: #8DBCEB; 
 		margin-top: 25px;
 		margin-bottom: 15px;
 		border-radius: 10px;
 		border: 1px solid #9EBDDB;
-		opacity: 0.8;
 		text-shadow: 0.5px 0.5px #0072E3;
 		-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
 		-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
@@ -271,7 +270,7 @@ ol > li:hover{
 
 #expense_submit,
 #expense_button{
-		background-color: #1A78D6;
+		background-color: #2b7bca;
 		font-size:15px;
 		color: white;
 		padding: 5px 5px;
@@ -281,6 +280,7 @@ ol > li:hover{
 		letter-spacing: 1px;
 		outline: none;
 		width:150px;
+		height:40px;
 		font-family: 'Roboto Slab', serif
 }
 

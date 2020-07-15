@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
+
 	<script type="text/javascript" src="budget.js"></script>
 	
 </head>
@@ -41,8 +42,8 @@
 		<main>
 			<div id="content_expense">
 				<div class="container">
-					<div id="title">Dodawanie wydatku</div>
-					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego wydatku</div>
+					<div id="title">Dodawanie przychodu</div>
+					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego przychodu</div>
 					<form method="post" enctype="text/plain">
 						<div class="row justify-content-center mt-4">
 							<div class="mr-4">
@@ -53,41 +54,19 @@
 							</div>
 						</div>
 						<div class="row justify-content-center mt-2">
-							<div class="mr-4">Sposób płatności :</div>
-							<div>
-								<label class="mr-3"><input type="radio" name="platnosc" value="" class="mr-1">gotówka</label>
-								<label class="mr-3"><input type="radio" name="platnosc" value="" class="mr-1">karta debetowa</label>
-								<label><input type="radio" name="platnosc" value="" class="mr-1">karta kredytowa</label>
-							</div>
-						</div>
-						<div class="row justify-content-center mt-1">
-							<div class="col-12 mb-1">Kategoria :</div>
+							<div class="col-12 mb-2">Kategoria :</div>
 							<div class="categories">
-								<div><label><input type="radio" value="1" name="kategoria" class="mr-1">Jedzenie</label></div>
-								<div><label><input type="radio" value="2" name="kategoria" class="mr-1">Mieszkanie</label></div>
-								<div><label><input type="radio" value="3" name="kategoria" class="mr-1">Transport</label></div>
-								<div><label><input type="radio" value="4" name="kategoria" class="mr-1">Telekomunikacja</label></div>
-								<div><label><input type="radio" value="5" name="kategoria" class="mr-1">Opieka zdrowotna</label></div>
-								<div><label><input type="radio" value="6" name="kategoria" class="mr-1">Ubranie</label></div>
-								<div><label><input type="radio" value="7" name="kategoria" class="mr-1">Higiena</label></div>
-								<div><label><input type="radio" value="8" name="kategoria" class="mr-1">Dzieci</label></div>
-							</div>
-							<div class="categories">
-								<div><label><input type="radio" value="9" name="kategoria" class="mr-1">Rozrywka</label></div>
-								<div><label><input type="radio" value="10" name="kategoria" class="mr-1">Wycieczka</label></div>
-								<div><label><input type="radio" value="11" name="kategoria" class="mr-1">Książki</label></div>
-								<div><label><input type="radio" value="12" name="kategoria" class="mr-1">Oszczędności</label></div>
-								<div><label><input type="radio" value="13" name="kategoria" class="mr-1">Emerytura</label></div>
-								<div><label><input type="radio" value="14" name="kategoria" class="mr-1">Spłata długów</label></div>
-								<div><label><input type="radio" value="15" name="kategoria" class="mr-1">Darowizna</label></div>
-								<div><label><input type="radio" value="16" name="kategoria" class="mr-1">Inne wydatki</label></div>
+								<div><label><input type="radio" value="1" name="kategoria" class="mr-2">Wynagrodzenie</label></div>
+								<div><label><input type="radio" value="2" name="kategoria" class="mr-2">Odsetki bankowe</label></div>
+								<div><label><input type="radio" value="3" name="kategoria" class="mr-2">Sprzedaż na allegro</label></div>
+								<div><label><input type="radio" value="4" name="kategoria" class="mr-2">Inne</label></div>
 							</div>
 						</div>
 						<div class="row justify-content-center">
 							<textarea name="comment" id="comment" rows="1" cols="70" placeholder="Krótki komentarz" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz'"></textarea>
 						</div>
-						<div class="row justify-content-center mt-3">
-								<input id="expense_submit" type="submit" value="Dodaj wydatek" class="mr-5"> 
+						<div class="row justify-content-center mt-4 mb-2">
+								<input id="expense_submit" type="submit" value="Dodaj przychód" class="mr-5"> 
 								<input id="expense_button" type="button" value="Anuluj"> 
 						</div>					
 					</form>
