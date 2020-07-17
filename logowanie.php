@@ -1,5 +1,10 @@
 <?php
 	session_start();
+
+	if(isset($_SESSION['logged_id'])){
+		header('Location: menu.php');
+		exit();
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -45,7 +50,11 @@
 						</div>	
 						<form action="zaloguj.php" method="post" enctype="multipart/form-data">
 							<div>								
-								<label><input type="email" name="email" placeholder="E-mail" <?php if(isset($_SESSION['given_email'])) echo 'value="'.$_SESSION['given_email'].'"' ?>></label>
+								<label><input type="email" name="email" placeholder="E-mail" 
+								<?php 
+										if(isset($_SESSION['given_email'])) echo 'value="'.$_SESSION['given_email'].'"' ;
+										if(isset($_SESSION['bad_attempt'])) echo 'value="'.$_SESSION['bad_attempt'].'"';
+								?>></label>
 							</div>
 
 							<?php
@@ -58,12 +67,19 @@
 							<div>	
 								<label><input type="password" name="pass" placeholder="Hasło"></label>
 							</div>
+
+							<?php
+								if(isset($_SESSION['bad_attempt'])){
+									echo "<div class='error'>Niepoprawny adres lub hasło!</div>";
+									unset($_SESSION['bad_attempt']);
+								}
+							?>
 							<div>
 								<input id="submit_log" type="submit" value="Zaloguj się">
 							</div>
 						</form>
 						<div id="attention">
-							<a href="rejestracja.html">Jeżeli nie posiadasz konta, kliknij tutaj aby się zarejestrować <i class="icon-ok"></i></a>
+							<a href="rejestracja.php">Jeżeli nie posiadasz konta, kliknij tutaj aby się zarejestrować <i class="icon-ok"></i></a>
 						</div>
 					</div>			
 				</section>
