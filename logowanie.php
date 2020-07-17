@@ -1,9 +1,13 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Budżet osobisty</title>
+	<title>Budżet osobisty - logowanie</title>
 	<meta name="description" content="Chcesz zapanować nad finansami? Załóż swój osobisty budżet! Sprawdź, jak to zrobić!" />
 	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -15,6 +19,13 @@
 	
 </head>
 <body>
+	<!-- Aby działał plik css w php-->
+	<style type="text/css">
+		<?php 
+			include './style.css'; 
+		?>
+	</style>
+
 	<div id="wrapper">
 		<header>
 			<div id="header">
@@ -32,12 +43,20 @@
 						<div id="sentence" >
 							Zaloguj się, aby móc skontrolować swoje finanse!
 						</div>	
-						<form method="post" enctype="text/plain">
+						<form action="zaloguj.php" method="post" enctype="multipart/form-data">
 							<div>								
-								<label><input type="email" name="email" placeholder="E-mail"></label>
+								<label><input type="email" name="email" placeholder="E-mail" <?php if(isset($_SESSION['given_email'])) echo 'value="'.$_SESSION['given_email'].'"' ?>></label>
 							</div>
+
+							<?php
+								if(isset($_SESSION['given_email'])){
+									echo "<div class='error'>Niepoprawny adres!</div>";
+									unset($_SESSION['given_email']);
+								}
+							?>
+
 							<div>	
-								<label><input type="password" name="haslo" placeholder="Hasło"></label>
+								<label><input type="password" name="pass" placeholder="Hasło"></label>
 							</div>
 							<div>
 								<input id="submit_log" type="submit" value="Zaloguj się">
