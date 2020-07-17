@@ -23,6 +23,13 @@
 	
 </head>
 <body>
+	<!-- Aby działał plik css w php-->
+	<style type="text/css">
+	<?php 
+		include './style.css'; 
+	?>
+	</style>
+
 	<div id="wrapper">
 		<header>
 			<div id="logo">
@@ -46,13 +53,19 @@
 			</nav>
 		</header>
 		<main>
-			<div id="main_page">
-				<p>
-					Witaj<?php echo " ".$_SESSION['username']."! " ?>
-				</p>
-				
-				Znajdujesz się na stronie swojego budżetu osobistego! <br /> 
-				Korzystaj z dostępnych opcji, aby móc jak najlepiej kontrolować swoje finanse!
+			<div id="content_expense">
+				<div class="container">
+					<div id="title"> 
+						Witaj<?php echo " ".$_SESSION['username']."! " ?>
+					</div>
+					<div id="sentence_expense" class="mb-3 mt-2">
+						Znajdujesz się na stronie swojego budżetu osobistego! <br /> 
+						Korzystaj z dostępnych opcji, aby móc jak najlepiej kontrolować swoje finanse!
+					</div>
+				</div>
+				<div class="mb-2" >
+					<img src="img/finanse.jpg" alt="Finanse">
+				</div>
 			</div>
 		</main>
 		<footer id="footer">
