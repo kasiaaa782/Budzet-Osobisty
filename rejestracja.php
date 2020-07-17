@@ -50,7 +50,7 @@
 							</div>
 						</form>
 						<div id="attention">
-							<a href="logowanie.html">Jeżeli posiadasz już konto, kliknij tutaj aby się zalogować <i class="icon-ok"></i></a>
+							<a href="logowanie.php">Jeżeli posiadasz już konto, kliknij tutaj aby się zalogować <i class="icon-ok"></i></a>
 						</div>
 					</div> 				
 				</section>

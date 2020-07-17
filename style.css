@@ -469,3 +469,16 @@ table{
 		border: 1px solid #1A78D6;
 		background-color: #f9f9f9;
 }
+
+#main_page{
+	color: #1A78D6;
+}
+
+.error{
+	color: #ff4b4b;
+	font-size: 14px;
+	margin-left: 12px;
+	text-align: left;
+	text-shadow: none;
+	letter-spacing: 2px;
+}
