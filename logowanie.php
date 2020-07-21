@@ -59,7 +59,7 @@
 
 							<?php
 								if(isset($_SESSION['given_email'])){
-									echo "<div class='error'>Niepoprawny adres!</div>";
+									echo "<div class='error'>Niewłaściwy adres!</div>";
 									unset($_SESSION['given_email']);
 								}
 							?>
@@ -70,7 +70,7 @@
 
 							<?php
 								if(isset($_SESSION['bad_attempt'])){
-									echo "<div class='error'>Niepoprawny adres lub hasło!</div>";
+									echo "<div class='error'>Nieprawidłowy adres lub hasło!</div>";
 									unset($_SESSION['bad_attempt']);
 								}
 							?>
