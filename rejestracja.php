@@ -9,18 +9,18 @@
 		//sprawdzenie poprawności imienia - długości (od 3 do 20 znaków) i bez dodatkowych znaków
 		$nick = $_POST['nickname'];
 		if((strlen($nick)<3) || (strlen($nick)>20)){
-			$wszystko_OK = false; 
+			$everything_OK = false; 
 			$_SESSION['e_nick'] = $_POST['nickname']; 
 		}
 		$checkName = '/^[A-ZŁŚ]{1}+[a-ząęółśżźćń]+$/';
 
 		if(preg_match($checkName, $nick) == false){
-			$wszystko_OK = false; 
+			$everything_OK = false; 
 			$_SESSION['e_nick'] = $_POST['nickname'];
 		}
 		
 		if((strlen($nick)<3) || (strlen($nick)>20)){
-			$wszystko_OK = false; 
+			$everything_OK = false; 
 			$_SESSION['e_nick'] = $_POST['nickname']; 
 		}
 
@@ -29,8 +29,8 @@
 		$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
 
 		if((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || $emailB!=$email){
-			$wszystko_OK = false; 
-			$_SESSION['e_email'] = $_POST["email"];
+			$everything_OK = false; 
+			$_SESSION['e_email'] = "Podaj poprawny adres e-mail!";
 		}
 
 		//sprawdzanie poprawności hasła
@@ -38,25 +38,79 @@
 		$pass2 = $_POST['pass2'];
 
 		if((strlen($pass1)<8) || (strlen($pass1)>20)){
-			$wszystko_OK = false; 
+			$everything_OK = false; 
 			$_SESSION['e_pass'] = $_POST['pass1']; 
 		}
 
 		if($pass1!=$pass2){
-			$wszystko_OK = false; 
+			$everything_OK = false; 
 			$_SESSION['e_pass2'] = $_POST['pass2']; 
 		}
 
 		$pass_hash = password_hash($pass1, PASSWORD_DEFAULT);
-		echo $pass_hash; exit();
+
+		//Czy zaakceptowano regulamin?
+		if(!isset($_POST['rules'])){
+			$everything_OK = false; 
+			$_SESSION['e_rules'] = "Potwierdź akceptację regulaminu!"; 
+		}
+		
+		//sprawdzenie reCAPTCHA
+		$secret = '6LfGF7QZAAAAADhNiTKjsTNu_qD6JTnVNdwES3QN';
+		$check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+		$answer = json_decode($check);
+
+		if($answer->success==false){
+			$everything_OK = false; 
+			$_SESSION['e_bot'] = "Potwierdź, że nie jesteś botem!"; 
+		}
+
+		//zapamiętaj wprowadzone dane
+		$_SESSION['fr_nick'] = $nick;
+		$_SESSION['fr_email'] = $email;
+		$_SESSION['fr_pass1'] = $pass1;
+		$_SESSION['fr_pass2'] = $pass2;
+		if(isset($_POST['rules']))	$_SESSION['fr_rules'] = true;
+
+		require_once 'database.php';
+
+		//sprawdzenie czy email istnieje w bazie
+		$userQuery = $db->prepare('SELECT id FROM users WHERE email = :email');
+		$userQuery->bindValue(':email', $email, PDO::PARAM_STR);
+		$userQuery->execute();
+		//dostajemy dane id w szufladkach tablicy asjocjacyjnej o nazwie tablic takich jak w bazie danych
+		$user = $userQuery->fetch();
+
+		if($user){
+			$everything_OK = false; 
+			$_SESSION['e_email'] = "Istnieje już konto o takim adresie, wybierz inny!";
+		} 
 
 		if($everything_OK == true){
 			//testy zaliczone, dodajemy użytkownika do bazy
-		}
+			$query = $db->prepare('INSERT INTO users VALUES (NULL, :username, :password, :email)');
+			$query->bindValue(':username', $nick, PDO::PARAM_STR);
+			$query->bindValue(':password', $pass_hash, PDO::PARAM_STR);
+			$query->bindValue(':email', $email, PDO::PARAM_STR);
+			$query->execute();
+			$_SESSION['successful_registration'] = 'Rejestracja przebiegła pomyślnie!';
+		
+			//Usuwanie zmiennych, które pamiętały wartości wprowadzone do formularza
+			if(isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
+			if(isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+			if(isset($_SESSION['fr_pass1'])) unset($_SESSION['fr_pass1']);
+			if(isset($_SESSION['fr_pass2'])) unset($_SESSION['fr_pass2']);
+			if(isset($_SESSION['fr_rules'])) unset($_SESSION['fr_rules']);
+
+			//Usuwanie błędów rejestracji 
+			if(isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
+			if(isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+			if(isset($_SESSION['e_pass'])) unset($_SESSION['e_pass']);
+			if(isset($_SESSION['e_pass2'])) unset($_SESSION['e_pass2']);
+			if(isset($_SESSION['e_rules'])) unset($_SESSION['e_rules']);
+			if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
+		}	
 	}
-
-
-
 ?>
 
 <!DOCTYPE HTML>
@@ -104,7 +158,12 @@
 						</div>
 						<form method="post">
 							<div>	
-								<label><input id="name" type="text" name="nickname" placeholder="Imię"></label>
+								<label><input id="name" type="text" value = "<?php 
+									if(isset($_SESSION['fr_nick'])){
+										echo $_SESSION['fr_nick'];
+										unset($_SESSION['fr_nick']);
+									}
+								?>" name="nickname" placeholder="Imię"></label>
 								<?php								
 									if(isset($_SESSION['e_nick'])){
 										echo "<div class='error'>To nie jest poprawne imię!</div>";
@@ -113,16 +172,26 @@
 								?>
 							</div>
 							<div>								
-								<label><input type="email" name="email" placeholder="E-mail"></label>
+								<label><input type="email" value = "<?php 
+									if(isset($_SESSION['fr_email'])){
+										echo $_SESSION['fr_email'];
+										unset($_SESSION['fr_email']);
+									}
+								?>" name="email" placeholder="E-mail" ></label>
 								<?php								
 									if(isset($_SESSION['e_email'])){
-										echo "<div class='error'>Podaj poprawny adres e-mail!</div>";
+										echo '<div class="error">'.$_SESSION['e_email'].'</div>';
 										unset($_SESSION['e_email']);
 									}
 								?>
 							</div>
 							<div>	
-								<label><input type="password" name="pass1" placeholder="Hasło"></label>
+								<label><input type="password" value = "<?php 
+									if(isset($_SESSION['fr_pass1'])){
+										echo $_SESSION['fr_pass1'];
+										unset($_SESSION['fr_pass1']);
+									}
+								?>" name="pass1" placeholder="Hasło"></label>
 								<?php								
 									if(isset($_SESSION['e_pass'])){
 										echo "<div class='error'>Hasło musi posiadać od 8 do 20 znaków!</div>";
@@ -131,7 +200,12 @@
 								?>
 							</div>
 							<div>	
-								<label><input type="password" name="pass2" placeholder="Powtórz hasło"></label>
+								<label><input type="password" value = "<?php 
+									if(isset($_SESSION['fr_pass2'])){
+										echo $_SESSION['fr_pass2'];
+										unset($_SESSION['fr_pass2']);
+									}
+								?>" name="pass2" placeholder="Powtórz hasło"></label>
 								<?php								
 									if(isset($_SESSION['e_pass2'])){
 										echo "<div class='error'>Podane hasła nie są identyczne!</div>";
@@ -139,15 +213,37 @@
 									}
 								?>
 							</div>
-
-
-							<div class = "text-left ml-3 mt-1">	
-								<label><input type="checkbox" name="regulamin" class="mr-2">Akceptuję regulamin</label>
+							<div class="text-left ml-3 mt-1">	
+								<label><input type="checkbox" name="rules" class="mr-2" <?php 
+									if(isset($_SESSION['fr_rules'])){
+										echo "checked";
+										unset($_SESSION['fr_rules']);
+									}
+								?>>Akceptuję regulamin</label>
 							</div>
-							<div class="g-recaptcha mt-1" data-sitekey="6LfGF7QZAAAAAMGmHHv7RLh8M0iVvoSHBlb6Codv"></div>
+								<?php
+									if(isset($_SESSION["e_rules"])){
+										echo '<div class="error">'.$_SESSION['e_rules']."</div>";
+										unset($_SESSION['e_rules']);
+									}
+								?>
+							<div class="g-recaptcha mt-2 mb-2" data-sitekey="6LfGF7QZAAAAAMGmHHv7RLh8M0iVvoSHBlb6Codv"></div>
+							<?php
+								if(isset($_SESSION["e_bot"])){
+									echo '<div class="error ml-5">'.$_SESSION['e_bot']."</div>";
+									unset($_SESSION['e_bot']);
+								}
+							?>
+							
 							<div>
 								<input id="submit_log" type="submit" value="Zarejestruj się">
 							</div>
+							<?php
+								if(isset($_SESSION['successful_registration'])){
+									echo '<div class="success">'.$_SESSION['successful_registration']."</div>";
+									unset($_SESSION['successful_registration']);
+								}
+							?>
 						</form>
 						<div id="attention">
 							<a href="logowanie.php">Jeżeli posiadasz konto, kliknij tutaj aby się zalogować <i class="icon-ok"></i></a>
