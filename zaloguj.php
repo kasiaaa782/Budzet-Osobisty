@@ -24,7 +24,7 @@
 				$user = $userQuery->fetch();
 
 				//password_verify($password, $user['password']) - sprawdzanie zahashowanego hasła
-				if($user == true && ($password == $user['password'])){
+				if($user && password_verify($password, $user['password'])){
 					$_SESSION['username'] = $user['username'];
 					$_SESSION['logged_id'] = $user['id'];
 					unset($_SESSION['bad_attempt']);

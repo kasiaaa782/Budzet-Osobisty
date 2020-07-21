@@ -53,8 +53,6 @@ h2{
 #sentence{
 		width: 350px;
 		padding: 10px;
-		margin-top: 8px;
-		margin-bottom: 8px;
 		font-size: 20px;
 }
 
@@ -82,16 +80,16 @@ h2{
 #name,
 input[type=email],
 input[type=password]{
-		width: 350px;
+		width: 370px;
 		background-color: #efefef;
 		color: #297bce;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
-		font-size: 18px;
+		font-size: 16px;
 		padding: 10px;
 		box-sizing: border-box;
 		outline: none;
-		margin-top: 10px;
+		margin-bottom: -3px;
 		font-family: 'Roboto Slab', serif;
 }
 
@@ -112,13 +110,13 @@ input[type=password]:focus, input[type=password]:hover{
 		font-size:18px;
 		color: white;
 		padding: 10px 5px;
-		margin-top: 20px;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
 		letter-spacing: 1px;
 		outline: none;
-		margin-bottom: 15px;
+		margin-top: 7px;
+		margin-bottom: 11px;
 		font-family: 'Roboto Slab', serif;
 }
 
@@ -475,10 +473,27 @@ table{
 }
 
 .error{
-	color: #ff4b4b;
-	font-size: 14px;
-	margin-left: 12px;
+	color: #d80303c0;
+	width: 350px;
+	font-size: 12px;
+	margin-left: 25px;
+	margin-top: -3px;
+	margin-bottom: 4px;
 	text-align: left;
 	text-shadow: none;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
+}
+
+.g-recaptcha{
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.success{
+	font-weight: bold;
+	margin: 10px 0px 15px 0px;
+	font-size: 22px;
+	width: 370px;
+	text-decoration: underline;
 }
