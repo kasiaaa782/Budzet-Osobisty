@@ -63,7 +63,7 @@
 						Korzystaj z dostępnych opcji, aby móc jak najlepiej kontrolować swoje finanse!
 					</div>
 				</div>
-				<div class="mb-2" >
+				<div class="mb-4" >
 					<img src="img/finanse.jpg" alt="Finanse">
 				</div>
 			</div>

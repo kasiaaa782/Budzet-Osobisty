@@ -226,6 +226,7 @@ ol > li:hover{
 }
 
 #amount, #date1{
+		background-color: #ffffff;
 		width: 160px;
 		height: 30px;
 		color: #003F7F;
@@ -268,6 +269,7 @@ ol > li:hover{
 #amount:hover, #amount:focus,
 #date1:hover, #date1:focus{
 		border-color: #9EBDDB;
+		background-color: #ffffff;
 }
 
 #expense_submit,

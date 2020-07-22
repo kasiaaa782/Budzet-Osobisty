@@ -1,5 +1,49 @@
 <?php
 	session_start();
+
+	if(!isset($_SESSION['logged_id'])){
+		header('Location: logowanie.php');
+	} else {
+		
+		if(isset($_POST['date'])){
+		
+			$everything_OK = true;
+
+			$date = $_POST['date'];
+			$_SESSION['fr_date'] = $date;
+			
+			$amount = $_POST['amount'];
+			$_SESSION['fr_amount'] = $amount;
+
+			if($amount == ''){
+				$everything_OK = false;
+				$_SESSION['e_data'] = "Uzupełnij dane!";
+			}
+		
+			if(isset($_POST['payment'])){
+				$payment = $_POST['payment'];
+				$_SESSION['fr_payment'] = $payment;
+			} else {
+				$everything_OK = false;
+				$_SESSION['e_payment'] = "Wybierz rodzaj płatności!";
+			}
+		
+			if(isset($_POST['category'])){
+				$category = $_POST['category'];
+				$_SESSION['fr_category'] = $category;
+			} else {
+				$everything_OK = false;
+				$_SESSION['e_category'] = "Wybierz kategorię!";
+			}
+		
+			if(isset($_POST['comment'])){
+				$comment = $_POST['comment'];
+				$_SESSION['fr_comment'] = $comment;
+			}
+		}
+
+	}	
+	
 ?>
 
 <!DOCTYPE HTML>
@@ -16,8 +60,9 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
-	<script type="text/javascript" src="budget.js"></script>
 	
+	<script type="text/javascript" src="budget.js"></script>
+
 </head>
 <body>
 	<!-- Aby działał plik css w php-->
@@ -26,6 +71,12 @@
 			include './style.css'; 
 		?>
 	</style>
+	<!-- Aby działał plik js w php-->
+	<script type="text/javascript">
+		<?php 
+			include './budget.js'; 
+		?>
+	</script>
 
 	<div id="wrapper">
 		<header>
@@ -50,58 +101,188 @@
 			</nav>
 		</header>
 		<main>
-			<div id="content_expense">
+			<section id="content_expense">
 				<div class="container">
 					<div id="title">Dodawanie wydatku</div>
 					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego wydatku</div>
-					<form method="post" enctype="text/plain">
+					<form method="post">
 						<div class="row justify-content-center mt-3 mb-2">
 							<div class="mr-4">
-								<label>Kwota : <input type="text" name="amount"  id="amount" ></label>
+								<label>Kwota : <input type="number" step="0.01" value = "<?php 
+									if(isset($_SESSION['fr_amount'])){
+										echo $_SESSION['fr_amount'];
+										unset($_SESSION['fr_amount']);
+									}
+								?>" name="amount" id="amount" ></label>
 							</div>
 							<div class="ml-4">
-								<label>Data : <input type="date" name="date" id="date1"></label>
+								<label>Data : <input type="date" name="date" id="date1" 
+								<?php
+									if(isset($_SESSION['fr_date'])){
+										echo "value = ".$_SESSION['fr_date']; 
+										unset($_SESSION['fr_date']);
+									}
+								?>
+								></label>
 							</div>
+							<?php								
+								if(isset($_SESSION['e_data'])){
+									echo '<div class="error text-center mr-4">'.$_SESSION['e_data'].'</div>';
+									unset($_SESSION['e_data']);
+								}
+							?>
 						</div>
 						<div class="row justify-content-center">
 							<div class="col-sm-12 col-md-3 mb-2">Sposób płatności:</div>
 							<div>
-								<label class="mr-4"><input type="radio" name="payment" value="" class="mr-2">gotówka</label>
-								<label class="mr-4"><input type="radio" name="payment" value="" class="mr-2">karta debetowa</label>
-								<label><input type="radio" name="platnosc" value="" class="mr-2">karta kredytowa</label>
+								<label class="mr-4"><input type="radio" name="payment" value="1" class="mr-2" 
+									<?php if(isset($_SESSION['fr_payment']) && $_SESSION['fr_payment'] == 1){ 
+										echo 'checked'; 
+										unset($_SESSION['fr_payment']);
+									}
+									?> >Gotówka</label>
+								<label class="mr-4"><input type="radio" name="payment" value="2" class="mr-2"
+									<?php if(isset($_SESSION['fr_payment']) && $_SESSION['fr_payment'] == 2){ 
+										echo 'checked'; 
+										unset($_SESSION['fr_payment']);
+									}
+									?> >Karta debetowa</label>
+								<label><input type="radio" name="payment" value="3" class="mr-2"
+								<?php if(isset($_SESSION['fr_payment']) && $_SESSION['fr_payment'] == 3){ 
+										echo 'checked'; 
+										unset($_SESSION['fr_payment']);
+									}
+									?> >Karta kredytowa</label>
 							</div>
+							<?php								
+								if(isset($_SESSION['e_payment'])){
+									echo '<div class="error text-center mr-4">'.$_SESSION['e_payment'].'</div>';
+									unset($_SESSION['e_payment']);
+								}
+							?>
 						</div>
 						<div class="row justify-content-center mt-1">
 							<div class="col-12 mb-2">Kategoria wydatku:</div>
 							<div class="row col-6 col-md-8 col-lg-12 justify-content-center ml-5">
 								<div class="categories">
-									<div><label><input type="radio" value="1" name="category" class="mr-2">Jedzenie</label></div>
-									<div><label><input type="radio" value="2" name="category" class="mr-2">Mieszkanie</label></div>
-									<div><label><input type="radio" value="3" name="category" class="mr-2">Transport</label></div>
-									<div><label><input type="radio" value="4" name="category" class="mr-2">Telekomunikacja</label></div>
+									<div><label><input type="radio" value="1" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 1){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Transport</label></div>
+									<div><label><input type="radio" value="2" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 2){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Książki</label></div>
+									<div><label><input type="radio" value="3" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 3){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Jedzenie</label></div>
+									<div><label><input type="radio" value="4" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 4){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Mieszkanie</label></div>
 								</div>
 								<div class="categories">
-									<div><label><input type="radio" value="5" name="category" class="mr-2">Opieka zdrowotna</label></div>
-									<div><label><input type="radio" value="6" name="category" class="mr-2">Ubranie</label></div>
-									<div><label><input type="radio" value="7" name="category" class="mr-2">Higiena</label></div>
-									<div><label><input type="radio" value="8" name="category" class="mr-2">Dzieci</label></div>
+									<div><label><input type="radio" value="5" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 5){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Telekomunikacja</label></div>
+									<div><label><input type="radio" value="6" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 6){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Opieka zdrowotna</label></div>
+									<div><label><input type="radio" value="7" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 7){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Ubranie</label></div>
+									<div><label><input type="radio" value="8" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 8){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Higiena</label></div>
 								</div>
 								<div class="categories">
-									<div><label><input type="radio" value="9" name="category" class="mr-2">Rozrywka</label></div>
-									<div><label><input type="radio" value="10" name="category" class="mr-2">Wycieczka</label></div>
-									<div><label><input type="radio" value="11" name="category" class="mr-2">Książki</label></div>
-									<div><label><input type="radio" value="12" name="category" class="mr-2">Oszczędności</label></div>
+									<div><label><input type="radio" value="9" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 9){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Dzieci</label></div>
+									<div><label><input type="radio" value="10" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 10){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Rozrywka</label></div>
+									<div><label><input type="radio" value="11" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 11){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Wycieczka</label></div>
+									<div><label><input type="radio" value="12" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 12){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Oszczędności</label></div>
 								</div>
 								<div class="categories">	
-									<div><label><input type="radio" value="13" name="category" class="mr-2">Emerytura</label></div>
-									<div><label><input type="radio" value="14" name="category" class="mr-2">Spłata długów</label></div>
-									<div><label><input type="radio" value="15" name="category" class="mr-2">Darowizna</label></div>
-									<div><label><input type="radio" value="16" name="category" class="mr-2">Inne wydatki</label></div>
+									<div><label><input type="radio" value="13" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 13){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Emerytura</label></div>
+									<div><label><input type="radio" value="14" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 14){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Spłata długów</label></div>
+									<div><label><input type="radio" value="15" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 15){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Darowizna</label></div>
+									<div><label><input type="radio" value="16" name="category" class="mr-2"
+										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 16){ 
+											echo 'checked'; 
+											unset($_SESSION['fr_category']);
+										}
+										?> >Inne wydatki</label></div>
 								</div>
 							</div>
+							<?php								
+								if(isset($_SESSION['e_category'])){
+									echo '<div class="error text-center mr-4">'.$_SESSION['e_category'].'</div>';
+									unset($_SESSION['e_category']);
+								}
+							?>
 						</div>
 						<div class="row justify-content-center">
-							<textarea name="comment" id="comment" rows="1" cols="70" placeholder="Krótki komentarz" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz'"></textarea>
+							<textarea name="comment" id="comment" rows="1" cols="70" placeholder="Krótki komentarz (opcjonalnie)" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz (opcjonalnie)'" 
+								><?php if(isset($_SESSION['fr_comment'])){ 
+										echo $_SESSION['fr_comment']; 
+										unset($_SESSION['fr_comment']);
+									}
+								?></textarea>
 						</div>
 						<div class="row justify-content-center mt-3">
 								<input id="expense_submit" type="submit" value="Dodaj wydatek" class="mr-5"> 
@@ -109,7 +290,7 @@
 						</div>					
 					</form>
 				</div>
-			</div>
+			</section>
 		</main>
 		<footer id="footer">
 			2020 &copy; Wszelkie prawa zastrzeżone 
