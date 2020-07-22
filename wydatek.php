@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -16,6 +20,13 @@
 	
 </head>
 <body>
+	<!-- Aby działał plik css w php-->
+	<style type="text/css">
+		<?php 
+			include './style.css'; 
+		?>
+	</style>
+
 	<div id="wrapper">
 		<header>
 			<div id="logo">
@@ -29,9 +40,9 @@
 				<div class="collapse navbar-collapse" id="mainmenu" >
 					<ol class="navbar-nav mx-auto">
 						<li class="nav-item mx-auto"><a class="nav-link" href="menu.php">Strona główna</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="przychod.html">Dodaj przychód</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.html">Dodaj wydatek</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="bilans.html">Przeglądaj bilans</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="przychod.php">Dodaj przychód</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.php">Dodaj wydatek</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link" href="bilans.php">Przeglądaj bilans</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="wylogowanie.php">Wyloguj się</a></li>
 					</ol>
@@ -44,43 +55,49 @@
 					<div id="title">Dodawanie wydatku</div>
 					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego wydatku</div>
 					<form method="post" enctype="text/plain">
-						<div class="row justify-content-center mt-4">
+						<div class="row justify-content-center mt-3 mb-2">
 							<div class="mr-4">
-								<label>Kwota : <input type="text" name="kwota"  id="amount" ></label>
+								<label>Kwota : <input type="text" name="amount"  id="amount" ></label>
 							</div>
 							<div class="ml-4">
-								<label>Data : <input type="date" name="data" id="data"></label>
+								<label>Data : <input type="date" name="date" id="date1"></label>
 							</div>
 						</div>
-						<div class="row justify-content-center mt-2">
-							<div class="mr-4">Sposób płatności :</div>
+						<div class="row justify-content-center">
+							<div class="col-sm-12 col-md-3 mb-2">Sposób płatności:</div>
 							<div>
-								<label class="mr-3"><input type="radio" name="platnosc" value="" class="mr-1">gotówka</label>
-								<label class="mr-3"><input type="radio" name="platnosc" value="" class="mr-1">karta debetowa</label>
-								<label><input type="radio" name="platnosc" value="" class="mr-1">karta kredytowa</label>
+								<label class="mr-4"><input type="radio" name="payment" value="" class="mr-2">gotówka</label>
+								<label class="mr-4"><input type="radio" name="payment" value="" class="mr-2">karta debetowa</label>
+								<label><input type="radio" name="platnosc" value="" class="mr-2">karta kredytowa</label>
 							</div>
 						</div>
 						<div class="row justify-content-center mt-1">
-							<div class="col-12 mb-1">Kategoria :</div>
-							<div class="categories">
-								<div><label><input type="radio" value="1" name="kategoria" class="mr-1">Jedzenie</label></div>
-								<div><label><input type="radio" value="2" name="kategoria" class="mr-1">Mieszkanie</label></div>
-								<div><label><input type="radio" value="3" name="kategoria" class="mr-1">Transport</label></div>
-								<div><label><input type="radio" value="4" name="kategoria" class="mr-1">Telekomunikacja</label></div>
-								<div><label><input type="radio" value="5" name="kategoria" class="mr-1">Opieka zdrowotna</label></div>
-								<div><label><input type="radio" value="6" name="kategoria" class="mr-1">Ubranie</label></div>
-								<div><label><input type="radio" value="7" name="kategoria" class="mr-1">Higiena</label></div>
-								<div><label><input type="radio" value="8" name="kategoria" class="mr-1">Dzieci</label></div>
-							</div>
-							<div class="categories">
-								<div><label><input type="radio" value="9" name="kategoria" class="mr-1">Rozrywka</label></div>
-								<div><label><input type="radio" value="10" name="kategoria" class="mr-1">Wycieczka</label></div>
-								<div><label><input type="radio" value="11" name="kategoria" class="mr-1">Książki</label></div>
-								<div><label><input type="radio" value="12" name="kategoria" class="mr-1">Oszczędności</label></div>
-								<div><label><input type="radio" value="13" name="kategoria" class="mr-1">Emerytura</label></div>
-								<div><label><input type="radio" value="14" name="kategoria" class="mr-1">Spłata długów</label></div>
-								<div><label><input type="radio" value="15" name="kategoria" class="mr-1">Darowizna</label></div>
-								<div><label><input type="radio" value="16" name="kategoria" class="mr-1">Inne wydatki</label></div>
+							<div class="col-12 mb-2">Kategoria wydatku:</div>
+							<div class="row col-6 col-md-8 col-lg-12 justify-content-center ml-5">
+								<div class="categories">
+									<div><label><input type="radio" value="1" name="category" class="mr-2">Jedzenie</label></div>
+									<div><label><input type="radio" value="2" name="category" class="mr-2">Mieszkanie</label></div>
+									<div><label><input type="radio" value="3" name="category" class="mr-2">Transport</label></div>
+									<div><label><input type="radio" value="4" name="category" class="mr-2">Telekomunikacja</label></div>
+								</div>
+								<div class="categories">
+									<div><label><input type="radio" value="5" name="category" class="mr-2">Opieka zdrowotna</label></div>
+									<div><label><input type="radio" value="6" name="category" class="mr-2">Ubranie</label></div>
+									<div><label><input type="radio" value="7" name="category" class="mr-2">Higiena</label></div>
+									<div><label><input type="radio" value="8" name="category" class="mr-2">Dzieci</label></div>
+								</div>
+								<div class="categories">
+									<div><label><input type="radio" value="9" name="category" class="mr-2">Rozrywka</label></div>
+									<div><label><input type="radio" value="10" name="category" class="mr-2">Wycieczka</label></div>
+									<div><label><input type="radio" value="11" name="category" class="mr-2">Książki</label></div>
+									<div><label><input type="radio" value="12" name="category" class="mr-2">Oszczędności</label></div>
+								</div>
+								<div class="categories">	
+									<div><label><input type="radio" value="13" name="category" class="mr-2">Emerytura</label></div>
+									<div><label><input type="radio" value="14" name="category" class="mr-2">Spłata długów</label></div>
+									<div><label><input type="radio" value="15" name="category" class="mr-2">Darowizna</label></div>
+									<div><label><input type="radio" value="16" name="category" class="mr-2">Inne wydatki</label></div>
+								</div>
 							</div>
 						</div>
 						<div class="row justify-content-center">
