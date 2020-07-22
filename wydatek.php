@@ -40,10 +40,35 @@
 				$comment = $_POST['comment'];
 				$_SESSION['fr_comment'] = $comment;
 			}
-		}
 
-	}	
+			require_once 'database.php';
+
+			if($everything_OK == true){
+				//testy zaliczone, dodajemy wydatek do bazy
+				$query = $db->prepare('INSERT INTO expenses VALUES (NULL, :user_id, :expense_category_assigned_to_user_id, :payment_method_assigned_to_user_id, :amount, :date_of_expense, :expense_comment)');
+				$query->bindValue(':user_id', $_SESSION['logged_id'], PDO::PARAM_INT);
+				$query->bindValue(':expense_category_assigned_to_user_id', $category, PDO::PARAM_INT);
+				$query->bindValue(':payment_method_assigned_to_user_id', $payment, PDO::PARAM_INT);
+				$query->bindValue(':amount', $amount, PDO::PARAM_STR);
+				$query->bindValue(':date_of_expense', $date, PDO::PARAM_STR);
+				$query->bindValue(':expense_comment', $comment, PDO::PARAM_STR);
+				$query->execute();
+				$_SESSION['successful_expense'] = 'Zaksięgowano nowy wydatek!';
+			
+				//Usuwanie zmiennych, które pamiętały wartości wprowadzone do formularza
+				if(isset($_SESSION['fr_date'])) unset($_SESSION['fr_date']);
+				if(isset($_SESSION['fr_amount'])) unset($_SESSION['fr_amount']);
+				if(isset($_SESSION['fr_payment'])) unset($_SESSION['fr_payment']);
+				if(isset($_SESSION['fr_category'])) unset($_SESSION['fr_category']);
+				if(isset($_SESSION['fr_comment'])) unset($_SESSION['fr_comment']);
 	
+				//Usuwanie błędów
+				if(isset($_SESSION['e_data'])) unset($_SESSION['e_data']);
+				if(isset($_SESSION['e_payment'])) unset($_SESSION['e_payment']);
+				if(isset($_SESSION['e_category'])) unset($_SESSION['e_category']);
+			}	
+		}
+	}	
 ?>
 
 <!DOCTYPE HTML>
@@ -127,7 +152,7 @@
 							</div>
 							<?php								
 								if(isset($_SESSION['e_data'])){
-									echo '<div class="error text-center mr-4">'.$_SESSION['e_data'].'</div>';
+									echo '<div class="error text-center mr-4 col-12">'.$_SESSION['e_data'].'</div>';
 									unset($_SESSION['e_data']);
 								}
 							?>
@@ -156,7 +181,7 @@
 							</div>
 							<?php								
 								if(isset($_SESSION['e_payment'])){
-									echo '<div class="error text-center mr-4">'.$_SESSION['e_payment'].'</div>';
+									echo '<div class="error text-center mr-4 col-12">'.$_SESSION['e_payment'].'</div>';
 									unset($_SESSION['e_payment']);
 								}
 							?>
@@ -271,7 +296,7 @@
 							</div>
 							<?php								
 								if(isset($_SESSION['e_category'])){
-									echo '<div class="error text-center mr-4">'.$_SESSION['e_category'].'</div>';
+									echo '<div class="error text-center mr-4 col-12">'.$_SESSION['e_category'].'</div>';
 									unset($_SESSION['e_category']);
 								}
 							?>
@@ -286,7 +311,15 @@
 						</div>
 						<div class="row justify-content-center mt-3">
 								<input id="expense_submit" type="submit" value="Dodaj wydatek" class="mr-5"> 
-								<input id="expense_button" type="button" value="Anuluj"> 
+								<input id="expense_button" type="button" value="Anuluj">
+						</div>
+						<div class="row justify-content-center mt-1">
+							<?php
+								if(isset($_SESSION['successful_expense'])){
+									echo '<div class="success">'.$_SESSION['successful_expense']."</div>";
+									unset($_SESSION['successful_expense']);
+								}
+							?>
 						</div>					
 					</form>
 				</div>
