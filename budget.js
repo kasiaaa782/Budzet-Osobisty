@@ -119,13 +119,12 @@ function drawChart()
 	var expense8 = parseFloat(document.getElementById("kids").innerHTML);
 	var expense9 = parseFloat(document.getElementById("entertainment").innerHTML);
 	var expense10 = parseFloat(document.getElementById("trip").innerHTML);
-	var expense11 = parseFloat(document.getElementById("training").innerHTML);
-	var expense12 = parseFloat(document.getElementById("books").innerHTML);
-	var expense13 = parseFloat(document.getElementById("savings").innerHTML);
-	var expense14 = parseFloat(document.getElementById("pension").innerHTML);
-	var expense15 = parseFloat(document.getElementById("debts").innerHTML);
-	var expense16 = parseFloat(document.getElementById("donation").innerHTML);
-	var expense17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+	var expense11 = parseFloat(document.getElementById("books").innerHTML);
+	var expense12 = parseFloat(document.getElementById("savings").innerHTML);
+	var expense13 = parseFloat(document.getElementById("pension").innerHTML);
+	var expense14 = parseFloat(document.getElementById("debts").innerHTML);
+	var expense15 = parseFloat(document.getElementById("donation").innerHTML);
+	var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
 	// Draw the chart and set the chart values
 	var data = google.visualization.arrayToDataTable([
 	['Kategoria', 'Kwota'],
@@ -139,13 +138,12 @@ function drawChart()
 	['Dzieci', expense8],
 	['Rozrywka', expense9],
 	['Wycieczka', expense10],
-	['Szkolenia', expense11],
-	['Książka', expense12],
-	['Oszczędności', expense13],
-	['Na emeryturę', expense14],
-	['Spłata długów', expense15],
-	['Darowizna', expense16],
-	['Inne wydatki', expense17]
+	['Książka', expense11],
+	['Oszczędności', expense12],
+	['Na emeryturę', expense13],
+	['Spłata długów', expense14],
+	['Darowizna', expense15],
+	['Inne wydatki', expense16]
 	]);
 	// Optional; add a title and set the width and height of the chart
 	var options = {
@@ -174,6 +172,7 @@ function addingIncomes()
 	 var income3 = parseFloat(document.getElementById("allegro").innerHTML);
 	 var income4 = parseFloat(document.getElementById("otherIncome").innerHTML);
 	 sum = income1+income2+income3+income4;
+	 sum = sum.roundNumber(2);
 	 document.getElementById("sumOfIncomes").innerHTML = sum;
 }
 
@@ -190,14 +189,14 @@ function addingExpenses()
 	 var expense8 = parseFloat(document.getElementById("kids").innerHTML);
 	 var expense9 = parseFloat(document.getElementById("entertainment").innerHTML);
 	 var expense10 = parseFloat(document.getElementById("trip").innerHTML);
-	 var expense11 = parseFloat(document.getElementById("training").innerHTML);
-	 var expense12 = parseFloat(document.getElementById("books").innerHTML);
-	 var expense13 = parseFloat(document.getElementById("savings").innerHTML);
-	 var expense14 = parseFloat(document.getElementById("pension").innerHTML);
-	 var expense15 = parseFloat(document.getElementById("debts").innerHTML);
-	 var expense16 = parseFloat(document.getElementById("donation").innerHTML);
-	 var expense17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
-	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16+expense17;
+	 var expense11 = parseFloat(document.getElementById("books").innerHTML);
+	 var expense12 = parseFloat(document.getElementById("savings").innerHTML);
+	 var expense13 = parseFloat(document.getElementById("pension").innerHTML);
+	 var expense14 = parseFloat(document.getElementById("debts").innerHTML);
+	 var expense15 = parseFloat(document.getElementById("donation").innerHTML);
+	 var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16;
+	 sum = sum.roundNumber(2);
 	 document.getElementById("sumOfExpenses").innerHTML = sum;
 }
 
