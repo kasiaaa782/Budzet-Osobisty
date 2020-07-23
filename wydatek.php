@@ -311,7 +311,7 @@
 						</div>
 						<div class="row justify-content-center mt-3">
 								<input id="expense_submit" type="submit" value="Dodaj wydatek" class="mr-5"> 
-								<input id="expense_button" type="button" value="Anuluj">
+								<input id="expense_button" type="reset" value="Anuluj">
 						</div>
 						<div class="row justify-content-center mt-1">
 							<?php
