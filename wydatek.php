@@ -302,7 +302,7 @@
 							?>
 						</div>
 						<div class="row justify-content-center">
-							<textarea name="comment" id="comment" rows="1" cols="70" placeholder="Krótki komentarz (opcjonalnie)" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz (opcjonalnie)'" 
+							<textarea name="comment" id="comment" rows="1" cols="55" placeholder="Krótki komentarz (opcjonalnie)" onfocus="this.placeholder=''" onblur="this.placeholder='Krótki komentarz (opcjonalnie)'" 
 								><?php if(isset($_SESSION['fr_comment'])){ 
 										echo $_SESSION['fr_comment']; 
 										unset($_SESSION['fr_comment']);
@@ -316,7 +316,7 @@
 						<div class="row justify-content-center mt-1">
 							<?php
 								if(isset($_SESSION['successful_expense'])){
-									echo '<div class="success">'.$_SESSION['successful_expense']."</div>";
+									echo '<div class="success mt-4 mb-3">'.$_SESSION['successful_expense']."</div>";
 									unset($_SESSION['successful_expense']);
 								}
 							?>

@@ -230,7 +230,7 @@
 							<div class="g-recaptcha mt-2 mb-2" data-sitekey="6LfGF7QZAAAAAMGmHHv7RLh8M0iVvoSHBlb6Codv"></div>
 							<?php
 								if(isset($_SESSION["e_bot"])){
-									echo '<div class="error ml-5">'.$_SESSION['e_bot']."</div>";
+									echo '<div class="error text-center mr-4">'.$_SESSION['e_bot']."</div>";
 									unset($_SESSION['e_bot']);
 								}
 							?>

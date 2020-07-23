@@ -1,7 +1,7 @@
 window.onload = function() 
 {
 	var title = document.getElementById("title").innerHTML;
-	if(title === "Dodawanie wydatku") setCurrentDate();
+	if(title === "Dodawanie wydatku" || title === "Dodawanie przychodu") setCurrentDate();
 	if(title === "Bilans finansowy") 
 	{
 		selectPeriod(1);
