@@ -82,7 +82,7 @@ input[type=email],
 input[type=password]{
 		width: 370px;
 		background-color: #efefef;
-		color: #297bce;
+		color: #003F7F;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
 		font-size: 16px;
@@ -101,7 +101,7 @@ input[type=password]:focus, input[type=password]:hover{
 		box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
 		border: 2px solid #9EBDDB;
 		border-radius: 5px;
-		color: #297bce;
+		color: #003F7F;
 }
 
 #submit_log{
@@ -158,6 +158,7 @@ a:hover{
 	border-top: 1px solid rgb(97, 176, 240);
 	border-bottom: 1px solid rgb(97, 176, 240);
 	text-align: center;
+	padding: 11px;
 }
 
 ol{
@@ -199,11 +200,11 @@ ol > li:hover{
 	}
 }
 
-/*expense*/
+/* expense/income */
 #sentence_expense{
 		font-size: 20px;
 		text-shadow: 0.3px 0.3px #0072E3;
-		margin: 10px;
+		margin: 8px;
 }
 
 #title{
@@ -224,19 +225,23 @@ ol > li:hover{
 		text-align: center;
 }
 
-#amount, #data{
+#amount, #date1{
+		background-color: #ffffff;
 		width: 160px;
 		height: 30px;
-		padding: 5px;
 		color: #003F7F;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
 		outline:none;
+		font-size: 15px;
+		padding: 5px;
 }
 
 .categories{
+	display: block;
+	width: 190px;
 	text-align: left;
-	margin: 0px 15px 0px 15px;	
+	margin: 0px 15px 0px 15px;
 }
 
 #comment{
@@ -262,8 +267,9 @@ ol > li:hover{
 }
 
 #amount:hover, #amount:focus,
-#data:hover, #data:focus{
+#date1:hover, #date1:focus{
 		border-color: #9EBDDB;
+		background-color: #ffffff;
 }
 
 #expense_submit,
