@@ -173,7 +173,8 @@ function addingIncomes()
 	 var income3 = parseFloat(document.getElementById("allegro").innerHTML);
 	 var income4 = parseFloat(document.getElementById("otherIncome").innerHTML);
 	 sum = income1+income2+income3+income4;
-	 sum = sum.roundNumber(2);
+	 //sum = sum.roundNumber(2);
+	 sum = sum.toFixed(2);
 	 document.getElementById("sumOfIncomes").innerHTML = sum;
 }
 
@@ -197,7 +198,8 @@ function addingExpenses()
 	 var expense15 = parseFloat(document.getElementById("donation").innerHTML);
 	 var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
 	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16;
-	 sum = sum.roundNumber(2);
+	 //sum = sum.roundNumber(2);
+	 sum = sum.toFixed(2);
 	 document.getElementById("sumOfExpenses").innerHTML = sum;
 }
 
@@ -213,15 +215,15 @@ function setScore()
 	var incomes = document.getElementById("sumOfIncomes").innerHTML;
 	var expenses = document.getElementById("sumOfExpenses").innerHTML;
 	score = incomes - expenses;
-	score = score.roundNumber(2);
+	score = score.toFixed(2);
 	document.getElementById("result").innerHTML = score;
 	
-	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj. Wpadasz w długi!";
+	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj! Wpadasz w długi!";
 	else if( score === 0) 
 	{
 		score = score+".00";
 		document.getElementById("result").innerHTML = score;
 		document.getElementById("score").innerHTML = "Nie udało Ci się zaoszczędzić. Wychodzisz na zero!";
 	}
-	else document.getElementById("score").innerHTML = "Gratulacje. Świetnie zarządzasz finansami!";
+	else document.getElementById("score").innerHTML = "Gratulacje! Świetnie zarządzasz finansami!";
 }

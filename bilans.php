@@ -3,10 +3,10 @@
 
 	function selectPeriodPhp($firstDate, $secondDate){
 		$firstDateFormated = date("d.m.Y", strtotime($firstDate));
-		$secondDateFormated = date("d.m.Y", strtotime($secondDate));		
+		$secondDateFormated = date("d.m.Y", strtotime($secondDate));
 		$_SESSION['sentencePeriod'] = 'Za okres od '.$firstDateFormated.' do '.$secondDateFormated;
 	}
-
+	
 	if(!isset($_SESSION['logged_id'])){
 		header('Location: logowanie.php');
 	} else {
@@ -25,17 +25,23 @@
 			case 1: //current month
 				$beginCurMonth = date("Y-m-01");
 				$endCurMonth = date("Y-m-t");				
-				selectPeriodPhp($beginCurMonth, $endCurMonth);			
+				selectPeriodPhp($beginCurMonth, $endCurMonth);	
+				$date1 = $beginCurMonth;
+				$date2 = $endCurMonth;	
 				break;
 			case 2: //previous month
 				$beginPrevMonth = date("Y-m-01", strtotime ("-1 month"));
 				$endPrevMonth = date("Y-m-t", strtotime ("-1 month"));				
-				selectPeriodPhp($beginPrevMonth, $endPrevMonth);	
+				selectPeriodPhp($beginPrevMonth, $endPrevMonth);
+				$date1 = $beginPrevMonth;
+				$date2 = $endPrevMonth;		
 				break;
 			case 3: //current year
 				$beginCurYear = date("Y-01-01");
 				$endCurYear = date("Y-12-t");				
 				selectPeriodPhp($beginCurYear, $endCurYear);	
+				$date1 = $beginCurYear;
+				$date2 = $endCurYear;	
 				break;
 			case 4: //nonstandard
 				if(empty($_POST['dateBegin'])){
@@ -52,17 +58,21 @@
 					$_SESSION['dateError'] = 'Błędny przedział czasowy!';
 				} else {
 					selectPeriodPhp($beginDate, $endDate);
+					$date1 = $beginDate;
+					$date2 = $endDate;	
 				}
 				break;
 		}
-		
+
 		require_once 'database.php';
 
 		$i = 4;
 		while($i > 0){
-			$query = $db->prepare('SELECT SUM(amount) FROM incomes WHERE user_id = :user_id AND income_category_assigned_to_user_id = :i');
+			$query = $db->prepare('SELECT SUM(amount) FROM incomes WHERE user_id = :user_id AND income_category_assigned_to_user_id = :i AND date_of_income BETWEEN :date1 AND :date2');
 			$query->bindValue(':user_id', $_SESSION['logged_id'], PDO::PARAM_INT);
 			$query->bindValue(':i', $i, PDO::PARAM_INT);
+			$query->bindValue(':date1', $date1, PDO::PARAM_STR);
+			$query->bindValue(':date2', $date2, PDO::PARAM_STR);
 			$query->execute();
 			//dostajemy dane amount w szufladkach tablicy asjocjacyjnej o nazwie tablic takich jak w bazie danych
 			$income = $query->fetch();
@@ -74,9 +84,11 @@
 
 		$j = 16;
 		while($j > 0){
-			$query = $db->prepare('SELECT SUM(amount) FROM expenses WHERE user_id = :user_id AND expense_category_assigned_to_user_id = :j');
+			$query = $db->prepare('SELECT SUM(amount) FROM expenses WHERE user_id = :user_id AND expense_category_assigned_to_user_id = :j AND date_of_expense BETWEEN :date1 AND :date2');
 			$query->bindValue(':user_id', $_SESSION['logged_id'], PDO::PARAM_INT);
 			$query->bindValue(':j', $j, PDO::PARAM_INT);
+			$query->bindValue(':date1', $date1, PDO::PARAM_STR);
+			$query->bindValue(':date2', $date2, PDO::PARAM_STR);
 			$query->execute();
 
 			$expense = $query->fetch();
@@ -159,16 +171,6 @@
 								<a href="bilans.php?option=3">Bieżący rok</a>
 								<a href="#myModal" data-toggle="modal" >Niestandardowy</a>
 							</div>
-							<!-- <form method='post'>
-								<select id="select_option" name="select_option"  >                      
-									<option value="0" >--Wybierz okres--</option>
-									<option value="1" onclick="selectPeriod(1);">Bieżący miesiąc</option>
-									<option value="2" onclick="selectPeriod(2);">Poprzedni miesiąc</option>
-									<option value="3" onclick="selectPeriod(3);">Bieżący rok</option>
-									<option value="4" >Niestandardowy</option>
-									
-								</select>
-							</form> -->
 							<!--Modal-->
 							<div class="modal fade text-body" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -424,7 +426,7 @@
 					<div class="mx-auto" id="balance">
 						<div id="balance1">BILANS</div>
 						<div id="result">0.00</div>
-						<div id="score">Gratulacje. Świetnie zarządzasz finansami!</div>
+						<div id="score">Gratulacje! Świetnie zarządzasz finansami!</div>
 					</div>
 				</div>
 			</div>
