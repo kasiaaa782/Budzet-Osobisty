@@ -4,7 +4,7 @@ window.onload = function()
 	if(title === "Dodawanie wydatku" || title === "Dodawanie przychodu") setCurrentDate();
 	if(title === "Bilans finansowy") 
 	{
-		selectPeriod(1);
+		//selectPeriod(1);
 		addingIncomes();
 		addingExpenses();
 		createPieChart();
@@ -104,6 +104,7 @@ function selectPeriod(option)
 			sentence = "Za okres od " + changeDateFormat(beginDate.toString()) + " do " + changeDateFormat(endDate.toString());
 			break;
 	}
+
 	document.getElementById("period").innerHTML = sentence;
 }
 

@@ -1,9 +1,61 @@
 <?php
 	session_start();
 
+	function selectPeriodPhp($firstDate, $secondDate){
+		$firstDateFormated = date("d.m.Y", strtotime($firstDate));
+		$secondDateFormated = date("d.m.Y", strtotime($secondDate));		
+		$_SESSION['sentencePeriod'] = 'Za okres od '.$firstDateFormated.' do '.$secondDateFormated;
+	}
+
 	if(!isset($_SESSION['logged_id'])){
 		header('Location: logowanie.php');
 	} else {
+		
+		if(!isset($_GET['option'])&&!isset($_POST['dateBegin'])&&!isset($_POST['dateEnd'])){
+			$option = 1;
+		}
+		if(isset($_GET['option'])){
+			$option = $_GET['option'];
+		}
+		if(isset($_POST['dateBegin']) || isset($_POST['dateEnd'])){
+			$option = 4;
+		}
+		
+		switch($option){
+			case 1: //current month
+				$beginCurMonth = date("Y-m-01");
+				$endCurMonth = date("Y-m-t");				
+				selectPeriodPhp($beginCurMonth, $endCurMonth);			
+				break;
+			case 2: //previous month
+				$beginPrevMonth = date("Y-m-01", strtotime ("-1 month"));
+				$endPrevMonth = date("Y-m-t", strtotime ("-1 month"));				
+				selectPeriodPhp($beginPrevMonth, $endPrevMonth);	
+				break;
+			case 3: //current year
+				$beginCurYear = date("Y-01-01");
+				$endCurYear = date("Y-12-t");				
+				selectPeriodPhp($beginCurYear, $endCurYear);	
+				break;
+			case 4: //nonstandard
+				if(empty($_POST['dateBegin'])){
+					$beginDate = date("Y-m-d");
+				} else {
+					$beginDate = $_POST['dateBegin'];
+				}
+				if(empty($_POST['dateEnd'])){
+					$endDate = date("Y-m-d");
+				} else {
+					$endDate = $_POST['dateEnd'];
+				}
+				if($beginDate > $endDate || $endDate < $beginDate){
+					$_SESSION['dateError'] = 'Błędny przedział czasowy!';
+				} else {
+					selectPeriodPhp($beginDate, $endDate);
+				}
+				break;
+		}
+		
 		require_once 'database.php';
 
 		$i = 4;
@@ -102,38 +154,61 @@
 						<div class="mb-3 mt-3 mt-lg-0" id="select_period_dropdown">
 							<button id="dropbutton">Wybierz okres</button>
 							<div id="dropdown-content">
-								<a href="#" onclick="selectPeriod(1)">Bieżący miesiąc</a>
-								<a href="#" onclick="selectPeriod(2)">Poprzedni miesiąc</a>
-								<a href="#" onclick="selectPeriod(3)">Bieżący rok</a>
-								<a href="#myModal" data-toggle="modal">Niestandardowy</a>
+								<a href="bilans.php?option=1">Bieżący miesiąc</a>
+								<a href="bilans.php?option=2">Poprzedni miesiąc</a>
+								<a href="bilans.php?option=3">Bieżący rok</a>
+								<a href="#myModal" data-toggle="modal" >Niestandardowy</a>
 							</div>
+							<!-- <form method='post'>
+								<select id="select_option" name="select_option"  >                      
+									<option value="0" >--Wybierz okres--</option>
+									<option value="1" onclick="selectPeriod(1);">Bieżący miesiąc</option>
+									<option value="2" onclick="selectPeriod(2);">Poprzedni miesiąc</option>
+									<option value="3" onclick="selectPeriod(3);">Bieżący rok</option>
+									<option value="4" >Niestandardowy</option>
+									
+								</select>
+							</form> -->
 							<!--Modal-->
 							<div class="modal fade text-body" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
-								  <div class="modal-content">
-									<div class="modal-header">
-									  <h4 class="modal-title" id="myModalLabel">Wybierz przedział czasowy</h4>
-									  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">×</span>
-									  </button>
-									</div>
-									<div class="modal-body text-center mt-3 mb-3">
-									  	<div id="selectPeriod">	
-											od <input type="date" id="dateBegin">
-											do <input type="date" id="dateEnd">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">Wybierz przedział czasowy</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">×</span>
+											</button>
 										</div>
+										<form method="post" action="bilans.php" >
+											<div class="modal-body text-center mt-3 mb-3">
+												<div id="selectPeriod">	
+													od <input type="date" name="dateBegin" id="dateBegin">
+													do <input type="date" name="dateEnd" id="dateEnd">
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+												<button type="submit" class="btn btn-primary" >Pokaż</button>
+											</div>
+										</form>
 									</div>
-									<div class="modal-footer">
-									  <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
-									  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="selectPeriod(4)">Pokaż</button>
-									</div>
-								  </div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row justify-content-center">
-						<div class="col-12 text-center" id="period">Za okres od 01.04.2020 do 31.04.2020</div>
+						<div class="col-12 text-center" id="period" >
+						<?php								
+							if(isset($_SESSION['sentencePeriod'])){
+								echo $_SESSION['sentencePeriod'];
+								unset($_SESSION['sentencePeriod']);
+							}
+							if(isset($_SESSION['dateError'])){
+								echo $_SESSION['dateError'];
+								unset($_SESSION['dateError']);
+							}
+						?>
+						</div>
 					</div>
 				</div>
 				<div class="container">
