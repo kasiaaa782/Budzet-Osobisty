@@ -117,7 +117,7 @@
 					<ol class="navbar-nav mx-auto">
 						<li class="nav-item mx-auto"><a class="nav-link" href="menu.php">Strona główna</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="przychod.php">Dodaj przychód</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.php">Dodaj wydatek</a></li>
+						<li class="nav-item mx-auto active"><a class="nav-link" href="wydatek.php">Dodaj wydatek</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="bilans.php">Przeglądaj bilans</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="wylogowanie.php">Wyloguj się</a></li>

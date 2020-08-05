@@ -139,17 +139,14 @@ a:link{
 	text-decoration:none;
 }
 
-a:visited{
-	color: #FFFFFF;
-}
-
-a:hover{
+a:visited, a:hover{
 	color: #FFFFFF;
 }
 
 #attention:hover{
 		font-weight: bold;
 }
+
 
 /*menu*/
 .navbar{
@@ -437,7 +434,7 @@ th, td {
 table{
 	margin-bottom: 20px;
 	width: 400px;
-	background-color:  #1a78d6;
+	background-color: #3793eefd;
 }
 
 #result{
