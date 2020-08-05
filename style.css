@@ -53,8 +53,6 @@ h2{
 #sentence{
 		width: 350px;
 		padding: 10px;
-		margin-top: 8px;
-		margin-bottom: 8px;
 		font-size: 20px;
 }
 
@@ -82,16 +80,16 @@ h2{
 #name,
 input[type=email],
 input[type=password]{
-		width: 350px;
+		width: 370px;
 		background-color: #efefef;
-		color: #297bce;
+		color: #003F7F;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
-		font-size: 18px;
+		font-size: 16px;
 		padding: 10px;
 		box-sizing: border-box;
 		outline: none;
-		margin-top: 10px;
+		margin-bottom: -3px;
 		font-family: 'Roboto Slab', serif;
 }
 
@@ -103,7 +101,7 @@ input[type=password]:focus, input[type=password]:hover{
 		box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
 		border: 2px solid #9EBDDB;
 		border-radius: 5px;
-		color: #297bce;
+		color: #003F7F;
 }
 
 #submit_log{
@@ -112,13 +110,13 @@ input[type=password]:focus, input[type=password]:hover{
 		font-size:18px;
 		color: white;
 		padding: 10px 5px;
-		margin-top: 20px;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
 		letter-spacing: 1px;
 		outline: none;
-		margin-bottom: 15px;
+		margin-top: 7px;
+		margin-bottom: 11px;
 		font-family: 'Roboto Slab', serif;
 }
 
@@ -141,11 +139,7 @@ a:link{
 	text-decoration:none;
 }
 
-a:visited{
-	color: #FFFFFF;
-}
-
-a:hover{
+a:visited, a:hover{
 	color: #FFFFFF;
 }
 
@@ -153,13 +147,15 @@ a:hover{
 		font-weight: bold;
 }
 
+
 /*menu*/
 .navbar{
 	min-height: 64px;
-	background-color: #1A78D6;
+	background-color: #3793eefd;
 	border-top: 1px solid rgb(97, 176, 240);
 	border-bottom: 1px solid rgb(97, 176, 240);
 	text-align: center;
+	padding: 11px;
 }
 
 ol{
@@ -201,11 +197,11 @@ ol > li:hover{
 	}
 }
 
-/*expense*/
+/* expense/income */
 #sentence_expense{
 		font-size: 20px;
 		text-shadow: 0.3px 0.3px #0072E3;
-		margin: 10px;
+		margin: 8px;
 }
 
 #title{
@@ -226,19 +222,23 @@ ol > li:hover{
 		text-align: center;
 }
 
-#amount, #data{
+#amount, #date1{
+		background-color: #ffffff;
 		width: 160px;
 		height: 30px;
-		padding: 5px;
 		color: #003F7F;
 		border: 2px solid #BCCAE8;
 		border-radius: 5px;
 		outline:none;
+		font-size: 15px;
+		padding: 5px;
 }
 
 .categories{
+	display: block;
+	width: 190px;
 	text-align: left;
-	margin: 0px 15px 0px 15px;	
+	margin: 0px 15px 0px 15px;
 }
 
 #comment{
@@ -264,8 +264,9 @@ ol > li:hover{
 }
 
 #amount:hover, #amount:focus,
-#data:hover, #data:focus{
+#date1:hover, #date1:focus{
 		border-color: #9EBDDB;
+		background-color: #ffffff;
 }
 
 #expense_submit,
@@ -433,7 +434,7 @@ th, td {
 table{
 	margin-bottom: 20px;
 	width: 400px;
-	background-color:  #1a78d6;
+	background-color: #3793eefd;
 }
 
 #result{
@@ -468,4 +469,34 @@ table{
 #piechart{
 		border: 1px solid #1A78D6;
 		background-color: #f9f9f9;
+}
+
+#main_page{
+	color: #1A78D6;
+}
+
+.error{
+	color: #d80303c0;
+	width: 350px;
+	font-size: 12px;
+	margin-left: 25px;
+	margin-top: -3px;
+	margin-bottom: 4px;
+	text-align: left;
+	text-shadow: none;
+	letter-spacing: 1px;
+}
+
+.g-recaptcha{
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.success{
+	font-weight: bold;
+	margin: 10px 0px 15px 0px;
+	font-size: 22px;
+	width: 370px;
+	text-decoration: underline;
 }

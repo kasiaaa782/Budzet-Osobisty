@@ -1,3 +1,11 @@
+<?php
+	session_start();
+
+	if(!isset($_SESSION['logged_id'])){
+		header('Location: logowanie.php');
+	}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -15,6 +23,13 @@
 	
 </head>
 <body>
+	<!-- Aby działał plik css w php-->
+	<style type="text/css">
+	<?php 
+		include './style.css'; 
+	?>
+	</style>
+
 	<div id="wrapper">
 		<header>
 			<div id="logo">
@@ -27,17 +42,31 @@
 					</button>
 					<div class="collapse navbar-collapse" id="mainmenu" >
 						<ol class="navbar-nav mx-auto">
-							<li class="nav-item mx-auto"><a class="nav-link" href="rejestracja.html">Strona główna</a></li>
-							<li class="nav-item mx-auto"><a class="nav-link" href="przychod.html">Dodaj przychód</a></li>
-							<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.html">Dodaj wydatek</a></li>
-							<li class="nav-item mx-auto"><a class="nav-link" href="bilans.html">Przeglądaj bilans</a></li>
+							<li class="nav-item mx-auto active"><a class="nav-link" href="menu.php">Strona główna</a></li>
+							<li class="nav-item mx-auto"><a class="nav-link" href="przychod.php">Dodaj przychód</a></li>
+							<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.php">Dodaj wydatek</a></li>
+							<li class="nav-item mx-auto"><a class="nav-link" href="bilans.php">Przeglądaj bilans</a></li>
 							<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
-							<li class="nav-item mx-auto"><a class="nav-link" href="logowanie.html">Wyloguj się</a></li>
+							<li class="nav-item mx-auto"><a class="nav-link" href="wylogowanie.php">Wyloguj się</a></li>
 						</ol>
 					</div>
 			</nav>
 		</header>
 		<main>
+			<div id="content_expense">
+				<div class="container">
+					<div id="title"> 
+						Witaj<?php echo " ".$_SESSION['username']."! " ?>
+					</div>
+					<div id="sentence_expense" class="mb-3 mt-2">
+						Znajdujesz się na stronie swojego budżetu osobistego! <br /> 
+						Korzystaj z dostępnych opcji, aby móc jak najlepiej kontrolować swoje finanse!
+					</div>
+				</div>
+				<div class="mb-4" >
+					<img src="img/finanse.jpg" alt="Finanse">
+				</div>
+			</div>
 		</main>
 		<footer id="footer">
 			2020 &copy; Wszelkie prawa zastrzeżone 

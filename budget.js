@@ -1,10 +1,10 @@
 window.onload = function() 
 {
 	var title = document.getElementById("title").innerHTML;
-	if(title === "Dodawanie wydatku") setCurrentDate();
+	if(title === "Dodawanie wydatku" || title === "Dodawanie przychodu") setCurrentDate();
 	if(title === "Bilans finansowy") 
 	{
-		selectPeriod(1);
+		//selectPeriod(1);
 		addingIncomes();
 		addingExpenses();
 		createPieChart();
@@ -14,18 +14,20 @@ window.onload = function()
 
 function setCurrentDate()
 {
-	var dateOnPage = document.getElementById("data");
-	var today = new Date();
+	var dateOnPage = document.getElementById("date1");
+	if(dateOnPage.value == ""){
+		var today = new Date();
 
-	var day = today.getDate().toString();
-	day = (day.length === 1) ? '0' + day : day;
+		var day = today.getDate().toString();
+		day = (day.length === 1) ? '0' + day : day;
+		
+		var month = today.getMonth() + 1;
+		month = (month.toString().length === 1) ? '0' + month : month;
+		
+		var year = today.getFullYear();
 	
-	var month = today.getMonth() + 1;
-	month = (month.toString().length === 1) ? '0' + month : month;
-	
-	var year = today.getFullYear();
-
-	dateOnPage.value = year + "-" + month + "-" + day ;
+		dateOnPage.value = year + "-" + month + "-" + day ;
+	}
 }
 
 function getDaysNumberOfMonth(month, year)
@@ -102,6 +104,7 @@ function selectPeriod(option)
 			sentence = "Za okres od " + changeDateFormat(beginDate.toString()) + " do " + changeDateFormat(endDate.toString());
 			break;
 	}
+
 	document.getElementById("period").innerHTML = sentence;
 }
 
@@ -117,13 +120,12 @@ function drawChart()
 	var expense8 = parseFloat(document.getElementById("kids").innerHTML);
 	var expense9 = parseFloat(document.getElementById("entertainment").innerHTML);
 	var expense10 = parseFloat(document.getElementById("trip").innerHTML);
-	var expense11 = parseFloat(document.getElementById("training").innerHTML);
-	var expense12 = parseFloat(document.getElementById("books").innerHTML);
-	var expense13 = parseFloat(document.getElementById("savings").innerHTML);
-	var expense14 = parseFloat(document.getElementById("pension").innerHTML);
-	var expense15 = parseFloat(document.getElementById("debts").innerHTML);
-	var expense16 = parseFloat(document.getElementById("donation").innerHTML);
-	var expense17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+	var expense11 = parseFloat(document.getElementById("books").innerHTML);
+	var expense12 = parseFloat(document.getElementById("savings").innerHTML);
+	var expense13 = parseFloat(document.getElementById("pension").innerHTML);
+	var expense14 = parseFloat(document.getElementById("debts").innerHTML);
+	var expense15 = parseFloat(document.getElementById("donation").innerHTML);
+	var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
 	// Draw the chart and set the chart values
 	var data = google.visualization.arrayToDataTable([
 	['Kategoria', 'Kwota'],
@@ -137,13 +139,12 @@ function drawChart()
 	['Dzieci', expense8],
 	['Rozrywka', expense9],
 	['Wycieczka', expense10],
-	['Szkolenia', expense11],
-	['Książka', expense12],
-	['Oszczędności', expense13],
-	['Na emeryturę', expense14],
-	['Spłata długów', expense15],
-	['Darowizna', expense16],
-	['Inne wydatki', expense17]
+	['Książka', expense11],
+	['Oszczędności', expense12],
+	['Na emeryturę', expense13],
+	['Spłata długów', expense14],
+	['Darowizna', expense15],
+	['Inne wydatki', expense16]
 	]);
 	// Optional; add a title and set the width and height of the chart
 	var options = {
@@ -172,6 +173,8 @@ function addingIncomes()
 	 var income3 = parseFloat(document.getElementById("allegro").innerHTML);
 	 var income4 = parseFloat(document.getElementById("otherIncome").innerHTML);
 	 sum = income1+income2+income3+income4;
+	 //sum = sum.roundNumber(2);
+	 sum = sum.toFixed(2);
 	 document.getElementById("sumOfIncomes").innerHTML = sum;
 }
 
@@ -188,14 +191,15 @@ function addingExpenses()
 	 var expense8 = parseFloat(document.getElementById("kids").innerHTML);
 	 var expense9 = parseFloat(document.getElementById("entertainment").innerHTML);
 	 var expense10 = parseFloat(document.getElementById("trip").innerHTML);
-	 var expense11 = parseFloat(document.getElementById("training").innerHTML);
-	 var expense12 = parseFloat(document.getElementById("books").innerHTML);
-	 var expense13 = parseFloat(document.getElementById("savings").innerHTML);
-	 var expense14 = parseFloat(document.getElementById("pension").innerHTML);
-	 var expense15 = parseFloat(document.getElementById("debts").innerHTML);
-	 var expense16 = parseFloat(document.getElementById("donation").innerHTML);
-	 var expense17 = parseFloat(document.getElementById("otherExpenses").innerHTML);
-	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16+expense17;
+	 var expense11 = parseFloat(document.getElementById("books").innerHTML);
+	 var expense12 = parseFloat(document.getElementById("savings").innerHTML);
+	 var expense13 = parseFloat(document.getElementById("pension").innerHTML);
+	 var expense14 = parseFloat(document.getElementById("debts").innerHTML);
+	 var expense15 = parseFloat(document.getElementById("donation").innerHTML);
+	 var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+	 sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16;
+	 //sum = sum.roundNumber(2);
+	 sum = sum.toFixed(2);
 	 document.getElementById("sumOfExpenses").innerHTML = sum;
 }
 
@@ -211,15 +215,15 @@ function setScore()
 	var incomes = document.getElementById("sumOfIncomes").innerHTML;
 	var expenses = document.getElementById("sumOfExpenses").innerHTML;
 	score = incomes - expenses;
-	score = score.roundNumber(2);
+	score = score.toFixed(2);
 	document.getElementById("result").innerHTML = score;
 	
-	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj. Wpadasz w długi!";
+	if( score < 0 ) document.getElementById("score").innerHTML = "Uważaj! Wpadasz w długi!";
 	else if( score === 0) 
 	{
 		score = score+".00";
 		document.getElementById("result").innerHTML = score;
 		document.getElementById("score").innerHTML = "Nie udało Ci się zaoszczędzić. Wychodzisz na zero!";
 	}
-	else document.getElementById("score").innerHTML = "Gratulacje. Świetnie zarządzasz finansami!";
+	else document.getElementById("score").innerHTML = "Gratulacje! Świetnie zarządzasz finansami!";
 }
