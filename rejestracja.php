@@ -56,7 +56,7 @@
 		}
 		
 		//sprawdzenie reCAPTCHA
-		$secret = '6LfGF7QZAAAAADhNiTKjsTNu_qD6JTnVNdwES3QN';
+		$secret = '6LfD_7wZAAAAAPmDQvgE9QJjiwT__HkfmsE88in1';
 		$check = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
 		$answer = json_decode($check);
 
@@ -227,7 +227,7 @@
 										unset($_SESSION['e_rules']);
 									}
 								?>
-							<div class="g-recaptcha mt-2 mb-2" data-sitekey="6LfGF7QZAAAAAMGmHHv7RLh8M0iVvoSHBlb6Codv"></div>
+							<div class="g-recaptcha mt-2 mb-2" data-sitekey="6LfD_7wZAAAAAKByS5gdsmA1paGplrNJxLk_QO_W"></div>
 							<?php
 								if(isset($_SESSION["e_bot"])){
 									echo '<div class="error text-center mr-4">'.$_SESSION['e_bot']."</div>";

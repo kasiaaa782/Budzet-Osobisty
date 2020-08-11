@@ -5,10 +5,10 @@ window.onload = function()
 	if(title === "Bilans finansowy") 
 	{
 		//selectPeriod(1);
-		addingIncomes();
-		addingExpenses();
+		//addingIncomes();
+		//addingExpenses();
 		createPieChart();
-		setScore();
+		//setScore();
 	}
 }
 
@@ -126,6 +126,7 @@ function drawChart()
 	var expense14 = parseFloat(document.getElementById("debts").innerHTML);
 	var expense15 = parseFloat(document.getElementById("donation").innerHTML);
 	var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
+
 	// Draw the chart and set the chart values
 	var data = google.visualization.arrayToDataTable([
 	['Kategoria', 'Kwota'],

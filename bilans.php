@@ -44,12 +44,12 @@
 				$date2 = $endCurYear;	
 				break;
 			case 4: //nonstandard
-				if(empty($_POST['dateBegin'])){
+				if(!isset($_POST['dateBegin'])){
 					$beginDate = date("Y-m-d");
 				} else {
 					$beginDate = $_POST['dateBegin'];
 				}
-				if(empty($_POST['dateEnd'])){
+				if(!isset($_POST['dateEnd'])){
 					$endDate = date("Y-m-d");
 				} else {
 					$endDate = $_POST['dateEnd'];
@@ -66,7 +66,8 @@
 
 		require_once 'database.php';
 
-		$i = 4;
+		$sumIncomes = 0;
+		$i = 4; //kategorie przychodu
 		while($i > 0){
 			$query = $db->prepare('SELECT SUM(amount) FROM incomes WHERE user_id = :user_id AND income_category_assigned_to_user_id = :i AND date_of_income BETWEEN :date1 AND :date2');
 			$query->bindValue(':user_id', $_SESSION['logged_id'], PDO::PARAM_INT);
@@ -77,12 +78,16 @@
 			//dostajemy dane amount w szufladkach tablicy asjocjacyjnej o nazwie tablic takich jak w bazie danych
 			$income = $query->fetch();
 
-			$_SESSION['in_amount'.$i]  = $income['SUM(amount)'];
+			if($income['SUM(amount)'] != 0){
+				$_SESSION['in_amount'.$i]  = $income['SUM(amount)'];
+				$sumIncomes += $income['SUM(amount)'];
+			}
 		
 			$i--;
 		}
 
-		$j = 16;
+		$sumExpenses = 0;
+		$j = 16; //kategorie wydatku
 		while($j > 0){
 			$query = $db->prepare('SELECT SUM(amount) FROM expenses WHERE user_id = :user_id AND expense_category_assigned_to_user_id = :j AND date_of_expense BETWEEN :date1 AND :date2');
 			$query->bindValue(':user_id', $_SESSION['logged_id'], PDO::PARAM_INT);
@@ -92,11 +97,17 @@
 			$query->execute();
 
 			$expense = $query->fetch();
-
-			$_SESSION['ex_amount'.$j]  = $expense['SUM(amount)'];
+			
+			if($expense['SUM(amount)'] != 0){
+				$_SESSION['ex_amount'.$j]  = $expense['SUM(amount)'];
+				$sumExpenses += $expense['SUM(amount)'];
+			}
 		
 			$j--;
 		}
+		$_SESSION['sumIncomes'] = number_format($sumIncomes, 2, '.' , '');
+		$_SESSION['sumExpenses'] = number_format($sumExpenses, 2, '.' , '');
+		$_SESSION['balance'] = number_format($sumIncomes - $sumExpenses, 2, '.' , '');
 	}
 ?>
 
@@ -221,45 +232,70 @@
 								<th>Kategoria</th>
 								<th>Kwota</th>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['in_amount1'])) echo 'style="display: none;"'?> >
 								<td>Wynagrodzenie</td>
-								<td id="salary"><?php if(isset($_SESSION['in_amount1'])){
+								<td id="salary">
+								<?php
+								if(isset($_SESSION['in_amount1'])){
 									echo $_SESSION['in_amount1'];
-									unset($_SESSION['in_amount1']);
+									unset($_SESSION["in_amount1"]);
 								} else {
-									echo '0.00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['in_amount2'])) echo 'style="display: none;"'?> >
 								<td>Odsetki bankowe</td>
-								<td id="bankInterest"><?php if(isset($_SESSION['in_amount2'])){
+								<td id="bankInterest">
+								<?php
+								if(isset($_SESSION['in_amount2'])){
 									echo $_SESSION['in_amount2'];
-									unset($_SESSION['in_amount2']);
+									unset($_SESSION["in_amount2"]);
 								} else {
-									echo '0.00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['in_amount3'])) echo 'style="display: none;"'?> >
 								<td>Sprzedaż na allegro</td>
-								<td id="allegro"><?php if(isset($_SESSION['in_amount3'])){
+								<td id="allegro">
+								<?php
+								if(isset($_SESSION['in_amount3'])){
 									echo $_SESSION['in_amount3'];
-									unset($_SESSION['in_amount3']);
+									unset($_SESSION["in_amount3"]);
 								} else {
-									echo '0.00';
-								}?></td>
-							</tr>
-							<tr>
+									echo 0.00;
+								}
+								?>
+								</td>
+							</tr>		
+							<tr <?php if(!isset($_SESSION['in_amount4'])) echo 'style="display: none;"'?> >
 								<td>Inne</td>
-								<td id="otherIncome"><?php if(isset($_SESSION['in_amount4'])){
+								<td id="otherIncome">
+								<?php
+								if(isset($_SESSION['in_amount4'])){
 									echo $_SESSION['in_amount4'];
-									unset($_SESSION['in_amount4']);
+									unset($_SESSION["in_amount4"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
 							<tr class="sum">
 								<td>Suma</td>
-								<td id="sumOfIncomes">0.00</td>
+								<td id="sumOfIncomes">
+								<?php								
+								if(isset($_SESSION['sumIncomes'])){
+									echo $_SESSION['sumIncomes'];
+									unset($_SESSION['sumIncomes']);
+								} else { 
+									echo '0.00';
+								}
+								?>
+								</td>
 							</tr>
 						</table> 
 					</div>
@@ -270,153 +306,226 @@
 								<th>Kategoria</th>
 								<th>Kwota</th>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount1'])) echo 'style="display: none;"'?> >
 								<td>Transport</td>
-								<td id="transport"><?php if(isset($_SESSION['ex_amount1'])){
+								<td id="transport">
+								<?php
+								if(isset($_SESSION['ex_amount1'])){
 									echo $_SESSION['ex_amount1'];
-									unset($_SESSION['ex_amount1']);
+									unset($_SESSION["ex_amount1"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount2'])) echo 'style="display: none;"'?> >
 								<td>Książki</td>
-								<td id="books"><?php if(isset($_SESSION['ex_amount2'])){
+								<td id="books">
+								<?php
+								if(isset($_SESSION['ex_amount2'])){
 									echo $_SESSION['ex_amount2'];
-									unset($_SESSION['ex_amount2']);
+									unset($_SESSION["ex_amount2"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount3'])) echo 'style="display: none;"'?> >
 								<td>Jedzenie</td>
-								<td id="eat"><?php if(isset($_SESSION['ex_amount3'])){
+								<td id="eat">
+								<?php
+								if(isset($_SESSION['ex_amount3'])){
 									echo $_SESSION['ex_amount3'];
 									unset($_SESSION['ex_amount3']);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount4'])) echo 'style="display: none;"'?> >
 								<td>Mieszkanie</td>
-								<td id="accommodation"><?php if(isset($_SESSION['ex_amount4'])){
+								<td id="accommodation">
+								<?php
+								if(isset($_SESSION['ex_amount4'])){
 									echo $_SESSION['ex_amount4'];
-									unset($_SESSION['ex_amount4']);
+									unset($_SESSION["ex_amount4"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount5'])) echo 'style="display: none;"'?> >
 								<td>Telekomunikacja</td>
-								<td id="telecommunication"><?php if(isset($_SESSION['ex_amount'])){
+								<td id="telecommunication">
+								<?php
+								if(isset($_SESSION['ex_amount5'])){
 									echo $_SESSION['ex_amount5'];
-									unset($_SESSION['ex_amount5']);
+									unset($_SESSION["ex_amount5"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount6'])) echo 'style="display: none;"'?> >
 								<td>Opieka zdrowotna</td>
-								<td id="healthcare"><?php if(isset($_SESSION['ex_amount6'])){
+								<td id="healthcare">
+								<?php
+								if(isset($_SESSION['ex_amount6'])){
 									echo $_SESSION['ex_amount6'];
-									unset($_SESSION['ex_amount6']);
+									unset($_SESSION["ex_amount6"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount7'])) echo 'style="display: none;"'?> >
 								<td>Ubranie</td>
-								<td id="clothes"><?php if(isset($_SESSION['ex_amount7'])){
+								<td id="clothes">
+								<?php
+								if(isset($_SESSION['ex_amount7'])){
 									echo $_SESSION['ex_amount7'];
-									unset($_SESSION['ex_amount7']);
+									unset($_SESSION["ex_amount7"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount8'])) echo 'style="display: none;"'?> >
 								<td>Higiena</td>
-								<td id="hygiene"><?php if(isset($_SESSION['ex_amount8'])){
+								<td id="hygiene">
+								<?php
+								if(isset($_SESSION['ex_amount8'])){
 									echo $_SESSION['ex_amount8'];
-									unset($_SESSION['ex_amount8']);
+									unset($_SESSION["ex_amount8"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount9'])) echo 'style="display: none;"'?> >
 								<td>Dzieci</td>
-								<td id="kids"><?php if(isset($_SESSION['ex_amount9'])){
+								<td id="kids">
+								<?php
+								if(isset($_SESSION['ex_amount9'])){
 									echo $_SESSION['ex_amount9'];
-									unset($_SESSION['ex_amount9']);
+									unset($_SESSION["ex_amount9"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount10'])) echo 'style="display: none;"'?> >
 								<td>Rozrywka</td>
-								<td id="entertainment"><?php if(isset($_SESSION['ex_amount10'])){
+								<td id="entertainment">
+								<?php
+								if(isset($_SESSION['ex_amount10'])){
 									echo $_SESSION['ex_amount10'];
-									unset($_SESSION['ex_amount10']);
+									unset($_SESSION["ex_amount10"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount11'])) echo 'style="display: none;"'?> >
 								<td>Wycieczka</td>
-								<td id="trip"><?php if(isset($_SESSION['ex_amount11'])){
+								<td id="trip">
+								<?php
+								if(isset($_SESSION['ex_amount11'])){
 									echo $_SESSION['ex_amount11'];
-									unset($_SESSION['ex_amount11']);
+									unset($_SESSION["ex_amount11"]);
 								} else {
-									echo '0,00';
-								}?></td>
-							</tr>									
-							<tr>
+									echo 0.00;
+								}
+								?>
+								</td>
+							</tr>
+							<tr <?php if(!isset($_SESSION['ex_amount12'])) echo 'style="display: none;"'?> >
 								<td>Oszczędności</td>
-								<td id="savings"><?php if(isset($_SESSION['ex_amount12'])){
+								<td id="savings">
+								<?php
+								if(isset($_SESSION['ex_amount12'])){
 									echo $_SESSION['ex_amount12'];
-									unset($_SESSION['ex_amount12']);
+									unset($_SESSION["ex_amount12"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount13'])) echo 'style="display: none;"'?> >
 								<td>Emerytura</td>
-								<td id="pension"><?php if(isset($_SESSION['ex_amount13'])){
+								<td id="pension">
+								<?php
+								if(isset($_SESSION['ex_amount13'])){
 									echo $_SESSION['ex_amount13'];
-									unset($_SESSION['ex_amount13']);
+									unset($_SESSION["ex_amount13"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount14'])) echo 'style="display: none;"'?> >
 								<td>Spłata długów</td>
-								<td id="debts"><?php if(isset($_SESSION['ex_amount14'])){
+								<td id="debts">
+								<?php
+								if(isset($_SESSION['ex_amount14'])){
 									echo $_SESSION['ex_amount14'];
-									unset($_SESSION['ex_amount14']);
+									unset($_SESSION["ex_amount14"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount15'])) echo 'style="display: none;"'?> >
 								<td>Darowizna</td>
-								<td id="donation"><?php if(isset($_SESSION['ex_amount15'])){
+								<td id="donation">
+								<?php
+								if(isset($_SESSION['ex_amount15'])){
 									echo $_SESSION['ex_amount15'];
-									unset($_SESSION['ex_amount15']);
+									unset($_SESSION["ex_amount15"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
-							<tr>
+							<tr <?php if(!isset($_SESSION['ex_amount16'])) echo 'style="display: none;"'?> >
 								<td>Inne wydatki</td>
-								<td id="otherExpenses"><?php if(isset($_SESSION['ex_amount16'])){
+								<td id="otherExpenses">
+								<?php
+								if(isset($_SESSION['ex_amount16'])){
 									echo $_SESSION['ex_amount16'];
-									unset($_SESSION['ex_amount16']);
+									unset($_SESSION["ex_amount16"]);
 								} else {
-									echo '0,00';
-								}?></td>
+									echo 0.00;
+								}
+								?>
+								</td>
 							</tr>
 							<tr class="sum">
 								<td>Suma</td>
-								<td id="sumOfExpenses">0.00</td>
+								<td id="sumOfExpenses">
+								<?php								
+								if(isset($_SESSION['sumExpenses'])){
+									echo $_SESSION['sumExpenses'];
+									unset($_SESSION['sumExpenses']);
+								} else { 
+									echo '0.00';
+								}
+								?>
+								</td>
 							</tr>
 						</table> 
 					</div>
@@ -425,8 +534,30 @@
 					</div>
 					<div class="mx-auto" id="balance">
 						<div id="balance1">BILANS</div>
-						<div id="result">0.00</div>
-						<div id="score">Gratulacje! Świetnie zarządzasz finansami!</div>
+						<div id="result">
+						<?php								
+						if(isset($_SESSION['balance'])){
+							echo $_SESSION['balance'];
+						} else { 
+							echo '0.00';
+						}
+						?>
+						</div>
+						<div id="score">
+						<?php
+						if(isset($_SESSION['balance'])){
+							if($_SESSION['balance'] > 0){
+								echo 'Gratulacje! Świetnie zarządzasz finansami!';
+							} else if ($_SESSION['balance'] == 0) {
+								echo 'Nie udało Ci się zaoszczędzić.'.'<br/>'.'Wychodzisz na zero!';
+							} else {
+								echo 'Uważaj! Wpadasz w długi!';
+							}
+							unset($_SESSION['balance']);
+						}
+						?>
+						</div>
+						
 					</div>
 				</div>
 			</div>
