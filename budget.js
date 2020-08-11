@@ -127,36 +127,40 @@ function drawChart()
 	var expense15 = parseFloat(document.getElementById("donation").innerHTML);
 	var expense16 = parseFloat(document.getElementById("otherExpenses").innerHTML);
 
-	// Draw the chart and set the chart values
+	sum = expense1+expense2+expense3+expense4+expense5+expense6+expense7+expense8+expense9+expense10+expense11+expense12+expense13+expense14+expense15+expense16;
+
+	if(sum != 0){
+		// Draw the chart and set the chart values
 	var data = google.visualization.arrayToDataTable([
-	['Kategoria', 'Kwota'],
-	['Jedzenie', expense1],
-	['Mieszkanie', expense2],
-	['Transport', expense3],
-	['Telekomunikacja', expense4],
-	['Opieka zdrowotna', expense5],
-	['Ubrania', expense6],
-	['Higiena', expense7],
-	['Dzieci', expense8],
-	['Rozrywka', expense9],
-	['Wycieczka', expense10],
-	['Książka', expense11],
-	['Oszczędności', expense12],
-	['Na emeryturę', expense13],
-	['Spłata długów', expense14],
-	['Darowizna', expense15],
-	['Inne wydatki', expense16]
-	]);
-	// Optional; add a title and set the width and height of the chart
-	var options = {
-		'title':'Wykres finansowy wydatków',
-		'width': 700, 
-		'height': 300,
-		is3D : true
-		};
-	//Display the chart inside the <div> element with id="piechart"
-	var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-	chart.draw(data, options);
+		['Kategoria', 'Kwota'],
+		['Jedzenie', expense1],
+		['Mieszkanie', expense2],
+		['Transport', expense3],
+		['Telekomunikacja', expense4],
+		['Opieka zdrowotna', expense5],
+		['Ubrania', expense6],
+		['Higiena', expense7],
+		['Dzieci', expense8],
+		['Rozrywka', expense9],
+		['Wycieczka', expense10],
+		['Książka', expense11],
+		['Oszczędności', expense12],
+		['Na emeryturę', expense13],
+		['Spłata długów', expense14],
+		['Darowizna', expense15],
+		['Inne wydatki', expense16]
+		]);
+		// Optional; add a title and set the width and height of the chart
+		var options = {
+			'title':'Wykres finansowy wydatków',
+			'width': 700, 
+			'height': 300,
+			is3D : true
+			};
+		//Display the chart inside the <div> element with id="piechart"
+		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		chart.draw(data, options);
+	}
 }
 
 function createPieChart()
