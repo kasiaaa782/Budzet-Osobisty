@@ -153,7 +153,7 @@
 				<section id="content" >
 					<div class="row text-center justify-content-center">
 						<h2>Rejestracja</h2>
-						<div class="sentence">
+						<div class="sentence mt-2 mb-2">
 							Zarejestruj się, aby móc utworzyć swój osobisty budżet!
 						</div>
 						<form method="post">
@@ -213,7 +213,7 @@
 									}
 								?>
 							</div>
-							<div class="text-left ml-3 mt-1">	
+							<div class="text-center mr-2 mt-2">	
 								<label><input type="checkbox" name="rules" class="mr-2" <?php 
 									if(isset($_SESSION['fr_rules'])){
 										echo "checked";
@@ -235,7 +235,7 @@
 								}
 							?>
 							
-							<div>
+							<div class="mt-3 mb-2">
 								<input id="submit_log" type="submit" value="Zarejestruj się">
 							</div>
 							<?php

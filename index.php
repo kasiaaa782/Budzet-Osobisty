@@ -12,7 +12,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Budżet osobisty - logowanie</title>
+	<title>Budżet osobisty</title>
 	<meta name="description" content="Chcesz zapanować nad finansami? Załóż swój osobisty budżet! Sprawdź, jak to zrobić!" />
 	<meta name="keywords" content="budżet, budżet osobisty, budżet domowy, finanse, wydatki, przychody, bilans finansowy" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -48,6 +48,7 @@
 						<div class="sentence1" >
 							Zacznij korzystać ze swojego budżetu!
 						</div>
+						<hr class="line">
 						<div id="button_container">
 							<a href="rejestracja.php" class="button_link">Rejestracja</a>
 							<a href="logowanie.php" class="button_link">Logowanie</a>

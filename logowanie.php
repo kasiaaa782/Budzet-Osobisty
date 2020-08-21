@@ -45,7 +45,7 @@
 				<section id="content" > 
 					<div class="row text-center justify-content-center">
 						<h2>Logowanie</h2>
-						<div class="sentence" >
+						<div class="sentence mt-2 mb-2" >
 							Zaloguj się, aby móc skontrolować swoje finanse!
 						</div>	
 						<form action="zaloguj.php" method="post" enctype="multipart/form-data">
@@ -74,7 +74,7 @@
 									unset($_SESSION['bad_attempt']);
 								}
 							?>
-							<div>
+							<div class="mt-2 mb-2">
 								<input id="submit_log" type="submit" value="Zaloguj się">
 							</div>
 						</form>
