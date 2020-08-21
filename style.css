@@ -41,7 +41,7 @@ h4{
 		text-align: center;	
 		background-color: #4CA0F5;
 		padding: 3px 0;
-		opacity: 0.7;
+		opacity: 0.8;
 }
 
 h2{
@@ -50,7 +50,7 @@ h2{
 	font-size: 40px;
 }
 
-#sentence{
+.sentence{
 		width: 350px;
 		padding: 10px;
 		font-size: 20px;
@@ -121,7 +121,7 @@ input[type=password]:focus, input[type=password]:hover{
 }
 
 #submit_log:hover{
-		background-color: #2E8FF1;
+		background-color: #207fdf;
 }
 
 #footer{
@@ -499,4 +499,58 @@ table{
 	font-size: 22px;
 	width: 370px;
 	text-decoration: underline;
+}
+
+/* main page index.php */
+
+.sentence1{
+	margin-top: 30px;
+	font-size: 28px;
+	letter-spacing: 1px;
+	font-style: italic;
+}
+
+#button_container{
+    margin:  40px 0px 40px 0px ;
+	perspective: 600px;
+	display: flex; 
+	justify-content: space-around;
+}
+
+.button_link{
+	border: 1px solid #1c6fc2;
+	margin: 25px;
+    padding: 30px;
+	color: white;
+	font-style: italic;
+	font-size: 25px;
+	letter-spacing: 1px;
+    /*cssmatic.com*/
+	background: linear-gradient(to right, rgba(92,137,204,1) 0%, rgba(68,118,193,1) 0%, rgba(56,113,188,1) 26%, rgba(21,97,172,1) 100%);
+	border-radius: 10px;
+	opacity: 0.9;
+    box-shadow: 3px 3px 0px 0px rgb(68,118,193), 0px 9px 10px rgba(0, 0, 0, 0.7);
+	transition: 0.2s;
+}
+
+@media all and (max-width: 991px){
+	#button_container{
+		flex-wrap: wrap;
+	}
+}
+
+.button_link:hover
+{
+    opacity: 1;
+    transform: rotateX(5deg);
+}
+.button_link:active
+{
+    outline: none;
+    position: relative;
+    top: 3px;
+    box-shadow: 3px 3px 0px 0px rgb(68,118,193), 0px 3px 6px rgba(0, 0, 0, 0.9);
+}
+.button_link:focus{
+    outline: none;
 }

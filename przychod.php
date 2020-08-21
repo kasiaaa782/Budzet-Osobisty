@@ -20,6 +20,11 @@
 				$_SESSION['e_data'] = "Uzupełnij dane!";
 			}
 			
+			if($amount <= 0){
+				$everything_OK = false;
+				$_SESSION['e_amount'] = "Przychód musi być dodatni!";
+			}
+
 			if(isset($_POST['category'])){
 				$category = $_POST['category'];
 				$_SESSION['fr_category'] = $category;
@@ -108,7 +113,7 @@
 						<li class="nav-item mx-auto active"><a class="nav-link" href="przychod.php">Dodaj przychód</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="wydatek.php">Dodaj wydatek</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="bilans.php">Przeglądaj bilans</a></li>
-						<li class="nav-item mx-auto"><a class="nav-link" href="#">Ustawienia</a></li>
+						<li class="nav-item mx-auto"><a class="nav-link disabled" href="#">Ustawienia</a></li>
 						<li class="nav-item mx-auto"><a class="nav-link" href="wylogowanie.php">Wyloguj się</a></li>
 					</ol>
 				</div>
@@ -128,6 +133,12 @@
 										unset($_SESSION['fr_amount']);
 									}
 								?>"></label>
+								<?php								
+								if(isset($_SESSION['e_amount'])){
+									echo '<div class="error text-center">'.$_SESSION['e_amount'].'</div>';
+									unset($_SESSION['e_amount']);
+								}
+							?>
 							</div>
 							<div class="ml-4">
 								<label>Data : <input type="date" name="date" id="date1" <?php

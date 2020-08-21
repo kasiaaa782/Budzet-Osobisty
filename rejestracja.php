@@ -153,7 +153,7 @@
 				<section id="content" >
 					<div class="row text-center justify-content-center">
 						<h2>Rejestracja</h2>
-						<div id="sentence">
+						<div class="sentence">
 							Zarejestruj się, aby móc utworzyć swój osobisty budżet!
 						</div>
 						<form method="post">

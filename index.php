@@ -21,7 +21,8 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/money.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
-	
+	<link href="https://fonts.googleapis.com/css2?family=Stoke&display=swap" rel="stylesheet">
+
 </head>
 <body>
 	<!-- Aby działał plik css w php-->
@@ -44,42 +45,12 @@
 			<div class="container">
 				<section id="content" > 
 					<div class="row text-center justify-content-center">
-						<h2>Logowanie</h2>
-						<div class="sentence" >
-							Zaloguj się, aby móc skontrolować swoje finanse!
-						</div>	
-						<form action="zaloguj.php" method="post" enctype="multipart/form-data">
-							<div>								
-								<label><input type="email" name="email" placeholder="E-mail" 
-								<?php 
-										if(isset($_SESSION['given_email'])) echo 'value="'.$_SESSION['given_email'].'"' ;
-										if(isset($_SESSION['bad_attempt'])) echo 'value="'.$_SESSION['bad_attempt'].'"';
-								?>></label>
-							</div>
-
-							<?php
-								if(isset($_SESSION['given_email'])){
-									echo "<div class='error'>Niewłaściwy adres!</div>";
-									unset($_SESSION['given_email']);
-								}
-							?>
-
-							<div>	
-								<label><input type="password" name="pass" placeholder="Hasło"></label>
-							</div>
-
-							<?php
-								if(isset($_SESSION['bad_attempt'])){
-									echo "<div class='error'>Nieprawidłowy adres lub hasło!</div>";
-									unset($_SESSION['bad_attempt']);
-								}
-							?>
-							<div>
-								<input id="submit_log" type="submit" value="Zaloguj się">
-							</div>
-						</form>
-						<div id="attention">
-							<a href="rejestracja.php">Jeżeli nie posiadasz konta, kliknij tutaj aby się zarejestrować <i class="icon-ok"></i></a>
+						<div class="sentence1" >
+							Zacznij korzystać ze swojego budżetu!
+						</div>
+						<div id="button_container">
+							<a href="rejestracja.php" class="button_link">Rejestracja</a>
+							<a href="logowanie.php" class="button_link">Logowanie</a>
 						</div>
 					</div>			
 				</section>
