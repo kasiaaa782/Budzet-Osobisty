@@ -64,7 +64,7 @@
 					</div>
 				</div>
 				<div class="mb-4" >
-					<img src="img/finanse.jpg" alt="Finanse">
+					<img class="img-fluid mt-3" src="img/finanse.jpg" alt="Finanse">
 				</div>
 			</div>
 		</main>

@@ -22,6 +22,7 @@ body{
 		height: 100%;
 }
 
+
 h1{
 	margin: 10px;
 	font-size: 40px;
@@ -224,7 +225,7 @@ ol > li:hover{
 
 #amount, #date1{
 		background-color: #ffffff;
-		width: 160px;
+		width: 100%;
 		height: 30px;
 		color: #003F7F;
 		border: 2px solid #BCCAE8;
@@ -234,11 +235,15 @@ ol > li:hover{
 		padding: 5px;
 }
 
+.block{
+	margin-left:10px;
+	margin-right:10px
+}
+
 .categories{
-	display: block;
-	width: 190px;
 	text-align: left;
-	margin: 0px 15px 0px 15px;
+	display: block;
+	width: 200px;
 }
 
 #comment{
@@ -433,23 +438,25 @@ th, td {
 
 table{
 	margin-bottom: 20px;
-	width: 400px;
+	width: 90%;
 	background-color: #3793eefd;
 }
 
-#result{
-		font-size: large;
-}
-
 #balance{
-		width: 400px;
-		background-color: #f9f9f9;
+		width: 90%;
+		background-color: #ffffff;
 		color: rgb(18, 98, 179);
 		margin-top:20px;
 		margin-bottom:10px;
 		border: 1px solid #1A78D6;
 		padding: 10px;
  		text-align: center;
+}
+
+@media all and (min-width: 900px){
+	table,#balance {
+		width:50%;
+	}
 }
 
 #balance1{
@@ -468,7 +475,6 @@ table{
 
 #piechart{
 		border: 1px solid #1A78D6;
-		background-color: #f9f9f9;
 }
 
 #main_page{
@@ -479,10 +485,11 @@ table{
 	color: #d80303c0;
 	width: 350px;
 	font-size: 12px;
-	margin-left: 25px;
-	margin-top: -3px;
-	margin-bottom: 4px;
-	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3px;
+	margin-bottom: 5px;
+	text-align: center;
 	text-shadow: none;
 	letter-spacing: 1px;
 }

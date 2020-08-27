@@ -19,11 +19,6 @@
 				$everything_OK = false;
 				$_SESSION['e_data'] = "Uzupełnij dane!";
 			}
-			
-			if($amount <= 0){
-				$everything_OK = false;
-				$_SESSION['e_amount'] = "Przychód musi być dodatni!";
-			}
 
 			if(isset($_POST['category'])){
 				$category = $_POST['category'];
@@ -126,21 +121,15 @@
 					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego przychodu</div>
 					<form method="post">
 						<div class="row justify-content-center mt-4">
-							<div class="mr-4">
-								<label>Kwota : <input type="number" step="0.01" name="amount" id="amount" value = "<?php 
+							<div class="block">
+								<label>Kwota : <input type="number" step="0.01" name="amount" min="0.01" id="amount" value = "<?php 
 									if(isset($_SESSION['fr_amount'])){
 										echo $_SESSION['fr_amount'];
 										unset($_SESSION['fr_amount']);
 									}
 								?>"></label>
-								<?php								
-								if(isset($_SESSION['e_amount'])){
-									echo '<div class="error text-center">'.$_SESSION['e_amount'].'</div>';
-									unset($_SESSION['e_amount']);
-								}
-							?>
 							</div>
-							<div class="ml-4">
+							<div class="block">
 								<label>Data : <input type="date" name="date" id="date1" <?php
 									if(isset($_SESSION['fr_date'])){
 										echo "value = ".$_SESSION['fr_date']; 

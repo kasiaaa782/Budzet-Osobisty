@@ -20,11 +20,6 @@
 				$_SESSION['e_data'] = "Uzupełnij dane!";
 			}
 
-			if($amount <= 0){
-				$everything_OK = false;
-				$_SESSION['e_amount'] = "Wysokość kwoty musi być dodatnia!";
-			}
-		
 			if(isset($_POST['payment'])){
 				$payment = $_POST['payment'];
 				$_SESSION['fr_payment'] = $payment;
@@ -137,21 +132,15 @@
 					<div id="sentence_expense">Uzupełnij poniższe dane dotyczące nowego wydatku</div>
 					<form method="post">
 						<div class="row justify-content-center mt-3 mb-2">
-							<div class="mr-4">
-								<label>Kwota : <input type="number" step="0.01" value = "<?php 
+							<div class="block">
+								<label>Kwota : <input type="number" step="0.01" min="0.01" value = "<?php 
 									if(isset($_SESSION['fr_amount'])){
 										echo $_SESSION['fr_amount'];
 										unset($_SESSION['fr_amount']);
 									}
 								?>" name="amount" id="amount" ></label>
-								<?php								
-								if(isset($_SESSION['e_amount'])){
-									echo '<div class="error text-center">'.$_SESSION['e_amount'].'</div>';
-									unset($_SESSION['e_amount']);
-								}
-								?>
 							</div>
-							<div class="ml-4">
+							<div class="block">
 								<label>Data : <input type="date" name="date" id="date1" 
 								<?php
 									if(isset($_SESSION['fr_date'])){
@@ -170,7 +159,7 @@
 						</div>
 						<div class="row justify-content-center">
 							<div class="col-sm-12 col-md-3 mb-2">Sposób płatności:</div>
-							<div>
+							<div >
 								<label class="mr-4"><input type="radio" name="payment" value="1" class="mr-2" 
 									<?php if(isset($_SESSION['fr_payment']) && $_SESSION['fr_payment'] == 1){ 
 										echo 'checked'; 
@@ -199,7 +188,7 @@
 						</div>
 						<div class="row justify-content-center mt-1">
 							<div class="col-12 mb-2">Kategoria wydatku:</div>
-							<div class="row col-6 col-md-8 col-lg-12 justify-content-center ml-5">
+							<div class="row col-sm-6 col-md-9 col-lg-12 justify-content-center ml-5">
 								<div class="categories">
 									<div><label><input type="radio" value="1" name="category" class="mr-2"
 										<?php if(isset($_SESSION['fr_category']) && $_SESSION['fr_category'] == 1){ 
