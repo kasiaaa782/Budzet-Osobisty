@@ -131,7 +131,7 @@ function drawChart()
 
 	if(sum != 0){
 		// Draw the chart and set the chart values
-	var data = google.visualization.arrayToDataTable([
+		var data = google.visualization.arrayToDataTable([
 		['Kategoria', 'Kwota'],
 		['Jedzenie', expense1],
 		['Mieszkanie', expense2],
@@ -152,9 +152,9 @@ function drawChart()
 		]);
 		// Optional; add a title and set the width and height of the chart
 		var options = {
-			'title':'Wykres finansowy wydatków',
-			'width': 700, 
-			'height': 300,
+			title:'Wykres finansowy wydatków',
+			width: 400,
+			height: 300,
 			is3D : true
 			};
 		//Display the chart inside the <div> element with id="piechart"

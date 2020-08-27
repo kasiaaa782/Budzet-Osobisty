@@ -127,7 +127,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">	
 
 
-	<script type="text/javascript" src="budget.js"></script>
+	<script type="text/javascript" src="script.js"></script>
 	<!--Wykorzystane do PieChart - wykresu-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -530,34 +530,36 @@
 						</table> 
 					</div>
 					<div class="row justify-content-center">
-						<div id="piechart"></div>
-					</div>
-					<div class="mx-auto" id="balance">
-						<div id="balance1">BILANS</div>
-						<div id="result">
-						<?php								
-						if(isset($_SESSION['balance'])){
-							echo $_SESSION['balance'];
-						} else { 
-							echo '0.00';
-						}
-						?>
+						<div class="row col-12 justify-content-center">		
+							<div id="piechart"></div>
 						</div>
-						<div id="score">
-						<?php
-						if(isset($_SESSION['balance'])){
-							if($_SESSION['balance'] > 0){
-								echo 'Gratulacje! Świetnie zarządzasz finansami!';
-							} else if ($_SESSION['balance'] == 0) {
-								echo 'Nie udało Ci się zaoszczędzić.'.'<br/>'.'Wychodzisz na zero!';
-							} else {
-								echo 'Uważaj! Wpadasz w długi!';
+						<div id="balance">
+							<div id="balance1">BILANS</div>
+							<div>
+							<?php								
+							if(isset($_SESSION['balance'])){
+								echo $_SESSION['balance'];
+							} else { 
+								echo '0.00';
 							}
-							unset($_SESSION['balance']);
-						}
-						?>
+							?>
+							</div>
+							<div id="score">
+							<?php
+							if(isset($_SESSION['balance'])){
+								if($_SESSION['balance'] > 0){
+									echo 'Gratulacje! Świetnie zarządzasz finansami!';
+								} else if ($_SESSION['balance'] == 0) {
+									echo 'Nie udało Ci się zaoszczędzić.'.'<br/>'.'Wychodzisz na zero!';
+								} else {
+									echo 'Uważaj! Wpadasz w długi!';
+								}
+								unset($_SESSION['balance']);
+							}
+							?>
+							</div>
+							
 						</div>
-						
 					</div>
 				</div>
 			</div>
